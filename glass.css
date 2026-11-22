@@ -1,0 +1,111 @@
+/* Liquid Glass layer — shared by all demo pages.
+   Translucent, blurred, light-catching surfaces over a soft moving colour field. */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, .42);
+  --glass-bg-strong: rgba(255, 255, 255, .62);
+  --glass-edge: rgba(255, 255, 255, .7);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, .9) inset, 0 -1px 0 rgba(255, 255, 255, .25) inset, 0 12px 40px -12px rgba(15, 23, 42, .18);
+  --glass-blur: blur(22px) saturate(185%);
+}
+
+/* Colour field behind the glass */
+body { background: #f4f7fb !important; position: relative; }
+body::before {
+  content: ""; position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(38vmax 38vmax at 15% 20%, color-mix(in srgb, var(--brand, var(--accent, #0e7490)) 42%, transparent), transparent 70%),
+    radial-gradient(34vmax 34vmax at 85% 15%, rgba(167, 139, 250, .38), transparent 70%),
+    radial-gradient(40vmax 40vmax at 70% 85%, rgba(56, 189, 248, .32), transparent 70%),
+    radial-gradient(30vmax 30vmax at 10% 90%, rgba(251, 191, 36, .22), transparent 70%);
+  filter: blur(30px);
+  animation: glass-drift 24s ease-in-out infinite alternate;
+}
+@keyframes glass-drift {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(3vmax, -2vmax, 0) rotate(8deg) scale(1.05); }
+  100% { transform: translate3d(-2vmax, 3vmax, 0) rotate(-6deg) scale(1); }
+}
+
+/* Let the colour field show through section backgrounds */
+.hero:not([id="hero"]), .alt-bg, section[style*="background"], footer { background: transparent !important; }
+footer { color: var(--muted, #475569) !important; border-top: 1px solid rgba(255, 255, 255, .6); }
+
+/* Glass surfaces */
+nav, .topbar, .card, .float, .doc, .steps > div, details, .book form, #contact form,
+.pill, .chip, .gallery img, .why img, .doc img, .hero-img img, iframe {
+  position: relative;
+  background: var(--glass-bg) !important;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-edge) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+nav { background: rgba(255, 255, 255, .5) !important; border-width: 0 0 1px !important; }
+.topbar { background: color-mix(in srgb, var(--brand-d, #155e75) 82%, transparent) !important; border: 0 !important; box-shadow: none !important; }
+
+/* Specular highlight: the light streak across the top of each pane */
+.card::before, .doc::before, .steps > div::after, .book form::before, #contact form::before, .float::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .65) 0%, rgba(255, 255, 255, .08) 38%, transparent 60%);
+  mix-blend-mode: soft-light;
+}
+/* Pointer-following glow (set by glass.js) */
+.card::after, .doc::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .55), transparent 60%);
+  transition: opacity .3s;
+}
+.card:hover::after, .doc:hover::after { opacity: 1; }
+.card:hover { transform: translateY(-4px) scale(1.01); }
+
+/* Liquid buttons */
+.btn {
+  position: relative; overflow: hidden; border-radius: 999px !important;
+  background: color-mix(in srgb, var(--brand, var(--accent, #0e7490)) 82%, transparent) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%); backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, .45) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .55) inset, 0 8px 24px -8px color-mix(in srgb, var(--brand, var(--accent, #0e7490)) 70%, transparent) !important;
+}
+.btn::before {
+  content: ""; position: absolute; inset: 0 0 50% 0; border-radius: 999px 999px 40% 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .45), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+.btn.alt, .btn.ghost {
+  background: rgba(255, 255, 255, .35) !important; color: var(--ink, #0f172a) !important;
+  border-color: rgba(255, 255, 255, .8) !important;
+}
+.hero .btn.ghost { color: #fff !important; background: rgba(255, 255, 255, .16) !important; }
+
+/* Form fields as frosted wells */
+input, select, textarea {
+  background: rgba(255, 255, 255, .55) !important;
+  border: 1px solid rgba(255, 255, 255, .85) !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06) inset;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid color-mix(in srgb, var(--brand, var(--accent, #0e7490)) 55%, transparent); outline-offset: 1px; }
+
+/* Icon tiles and tags pick up the glass too */
+.card .ic, .doc .tags span { background: rgba(255, 255, 255, .55) !important; border: 1px solid rgba(255, 255, 255, .8); }
+
+/* Photo hero on the general demo: glass content panel over the photo */
+#hero .wrap > * { position: relative; }
+#hero .stats > div {
+  padding: 10px 16px; border-radius: 16px;
+  background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .35);
+  -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%);
+}
+
+/* Floating WhatsApp bubble as a glass droplet */
+.wa { border: 1px solid rgba(255, 255, 255, .6); box-shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 0 10px 30px rgba(37, 211, 102, .45) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+  .card:hover { transform: none; }
+}
+/* Older browsers without backdrop-filter: fall back to solid, readable panels */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  nav, .card, .float, .doc, .steps > div, details, .book form, #contact form { background: var(--glass-bg-strong) !important; }
+}

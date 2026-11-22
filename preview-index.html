@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* ============================================================
+   SIRF YE HISSA BADLO — har client ke liye 2 minute ka kaam
+   ============================================================ */
+const BIZ = {
+  name: "Chai Adda Cafe",
+  tagline: "Strong chai, hot snacks, and good times with friends.",
+  type: "Cafe & Snacks",
+  phone: "919999999999",            // WhatsApp number, 91 ke saath, bina + ke
+  phoneDisplay: "+91 99999 99999",
+  address: "Shop 4, Main Road, Near Bus Stand, Your City",
+  mapQuery: "Main Road Bus Stand",   // Google Maps search text
+  timing: "Daily: 8:00 AM – 11:00 PM",
+  rating: "4.6",
+  reviews: "320+",
+  accent: "#c2410c",                 // brand color
+  heroImg: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=70",
+  services: [
+    { title: "Special Masala Chai", desc: "Ginger-cardamom chai, brewed fresh every day.", price: "₹20" },
+    { title: "Bun Maska", desc: "Soft bun with generous butter.", price: "₹35" },
+    { title: "Cold Coffee", desc: "Thick, creamy and ice-cold.", price: "₹80" },
+    { title: "Veg Sandwich", desc: "Grilled, loaded with cheese.", price: "₹90" },
+    { title: "Maggi Specials", desc: "5 flavours for every mood.", price: "₹60" },
+    { title: "Party Orders", desc: "Bulk orders for office and birthday parties.", price: "Call us" }
+  ],
+  gallery: [
+    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=70",
+    "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=70",
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=70",
+    "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=70"
+  ],
+  testimonials: [
+    { text: "Best chai in the area. We meet here every evening.", by: "Rahul S." },
+    { text: "Our party order arrived on time and everyone loved it.", by: "Priya K." },
+    { text: "Clean place, friendly staff, tasty and affordable.", by: "Amit P." }
+  ]
+};
+/* ============================================================ */
+
+/* Customize from link: ?k=salon&n=Krushna's+Hair+Studio&p=918530066059&a=Baner,+Pune&r=5.0&v=531 */
+const U = 'https://images.unsplash.com/photo-';
+const PRESETS = {
+  salon: { type: "Unisex Salon", timing: "Daily: 10:00 AM – 9:00 PM", testimonials: [{text:"Best haircut I have had in Pune. The stylists really listen.",by:"Sneha R."},{text:"Clean, hygienic and very professional staff.",by:"Rohit M."},{text:"Did my bridal makeup here and everyone loved the look.",by:"Pooja D."}], accent: "#9d174d", tagline: "Haircuts, colour, skincare and bridal — all under one roof, in expert hands.",
+    heroImg: U+"1560066984-138dadb4c035?w=1600&q=70",
+    services: [["Haircut & Styling","Latest styles for men, women and kids.","From ₹300"],["Hair Colour","Global, highlights, balayage.","From ₹1,200"],["Keratin / Smoothening","Frizz-free, smooth, shiny hair.","From ₹3,500"],["Facial & Cleanup","Glowing skin, for every skin type.","From ₹800"],["Bridal Makeup","The perfect look for your big day.","Call us"],["Manicure & Pedicure","Relax and get pampered.","From ₹600"]],
+    gallery: ["1522337360788-8b13dee7a37e","1562322140-8baeececf3df","1595476108010-b4d1f102b1b1","1633681926022-84c23e8cb2d6"] },
+  clinic: { type: "Dental Clinic", timing: "Mon–Sat: 10:00 AM – 8:30 PM", testimonials: [{text:"Completely painless root canal. The doctor explained everything clearly.",by:"Vikram S."},{text:"Very clean clinic and friendly staff. Highly recommended.",by:"Anjali P."},{text:"Got my braces here, the results are amazing.",by:"Karan T."}], accent: "#0f766e", tagline: "Trusted care from experienced doctors, right in your neighbourhood.",
+    heroImg: U+"1629909613654-28e377c37b09?w=1600&q=70",
+    services: [["Consultation","Thorough check-up and honest advice.","₹500"],["Dental Cleaning","Scaling & polishing.","From ₹1,000"],["Root Canal","Painless treatment.","Call us"],["Braces & Aligners","Straight teeth, confident smile.","Call us"],["Teeth Whitening","A brighter smile in one sitting.","From ₹4,000"],["Emergency Care","In pain? Walk in right away.","Call us"]],
+    gallery: ["1588776814546-1ffcf47267a5","1606811971618-4486d14f3f99","1598256989800-fe5f95da9787","1629909615184-74f495363b67"] },
+  gym: { type: "Gym & Fitness", timing: "Daily: 5:30 AM – 10:30 PM", testimonials: [{text:"Lost 8 kg in 3 months with the trainers here.",by:"Nikhil J."},{text:"Great equipment and never too crowded.",by:"Shruti K."},{text:"Trainers actually care about your form and progress.",by:"Arjun B."}], accent: "#b91c1c", tagline: "Modern equipment, certified trainers, and results you can see.",
+    heroImg: U+"1534438327276-14e5300c3a48?w=1600&q=70",
+    services: [["Monthly Membership","Full gym access.","₹1,500/mo"],["Personal Training","One-on-one sessions with a trainer.","Call us"],["Weight Loss Program","Diet + workout plan.","Call us"],["Strength Training","Proper form, safe progress.","Included"],["Cardio Zone","Treadmill, cycle, cross-trainer.","Included"],["Diet Consultation","A plan built around your goals.","₹999"]],
+    gallery: ["1571019613454-1cb2f99b2d8b","1517836357463-d25dfeac3438","1540497077202-7c8a3999166f","1583454110551-21f2fa2afe61"] },
+  coaching: { type: "Coaching Classes", timing: "Mon–Sat: 7:00 AM – 9:00 PM", testimonials: [{text:"My son's maths marks went from 60 to 90 in one year.",by:"Mrs. Kulkarni"},{text:"Small batches, so every student gets attention.",by:"Aditya G."},{text:"Teachers are patient and explain concepts clearly.",by:"Riya S."}], accent: "#1d4ed8", tagline: "Clear concepts, better marks — small batches, personal attention.",
+    heroImg: U+"1427504494785-3a9ca7044f45?w=1600&q=70",
+    services: [["Class 8–10","Maths, Science, English.","Call us"],["Class 11–12","Science & Commerce.","Call us"],["JEE / NEET Foundation","Strong base, early start.","Call us"],["Weekly Tests","Regular progress checks.","Included"],["Doubt Sessions","Every doubt answered.","Included"],["Free Demo Class","Try a class before you join.","Free"]],
+    gallery: ["1509062522246-3755977927d7","1427504494785-3a9ca7044f45","1503676260728-1c00da094a0b","1497633762265-9d179a990aa6"] }
+};
+(function () {
+  const q = new URLSearchParams(location.search);
+  const p = PRESETS[q.get('k')];
+  if (p) {
+    Object.assign(BIZ, p, {
+      services: p.services.map(([title, desc, price]) => ({ title, desc, price })),
+      gallery: p.gallery.map(id => U + id + "?w=800&q=70")
+    });
+  }
+  if (q.get('n')) BIZ.name = q.get('n');
+  if (q.get('a')) { BIZ.address = q.get('a'); BIZ.mapQuery = BIZ.name + ' ' + q.get('a'); }
+  if (q.get('p')) { BIZ.phone = q.get('p'); BIZ.phoneDisplay = '+' + q.get('p').replace(/^91/, '91 '); }
+  if (q.get('r')) BIZ.rating = q.get('r');
+  if (q.get('v')) BIZ.reviews = q.get('v') + '+';
+})();
+</script>
+<style>
+  :root { --accent: #c2410c; --ink: #1c1917; --muted: #57534e; --bg: #fafaf9; --card: #fff; --line: #e7e5e4; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.6 Inter, system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.15; margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+  nav { position: sticky; top: 0; z-index: 10; background: rgba(250,250,249,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+  nav b { font-family: Fraunces, serif; font-size: 1.25rem; }
+  nav .links { display: flex; gap: 22px; font-size: .95rem; color: var(--muted); }
+  nav .links a { text-decoration: none; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; transition: transform .15s, filter .15s; }
+  .btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+  .btn.ghost { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.5); }
+  .hero { position: relative; min-height: 82vh; display: grid; align-items: end; color: #fff; background: #000 center/cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.75)); }
+  .hero .wrap { position: relative; z-index: 1; padding-block: 72px; width: 100%; }
+  .chip { display: inline-block; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.16); font-size: .85rem; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.8rem); max-width: 14ch; }
+  .hero p { font-size: 1.15rem; max-width: 46ch; opacity: .92; margin: 16px 0 28px; }
+  .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 28px; margin-top: 36px; flex-wrap: wrap; font-size: .95rem; }
+  .stats strong { display: block; font-size: 1.6rem; font-family: Fraunces, serif; }
+  section { padding-block: 84px; }
+  .head { margin-bottom: 36px; }
+  .head small { color: var(--accent); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-top: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; transition: transform .2s, box-shadow .2s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.06); }
+  .card h3 { font-size: 1.2rem; }
+  .card p { color: var(--muted); margin: 6px 0 14px; }
+  .price { font-weight: 600; color: var(--accent); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 14px; display: block; }
+  .quote { font-size: 1.05rem; }
+  .quote span { display: block; margin-top: 12px; color: var(--muted); font-size: .9rem; }
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .contact iframe { width: 100%; height: 100%; min-height: 320px; border: 0; border-radius: 18px; }
+  .info p { margin: 0 0 14px; }
+  form { display: grid; gap: 12px; margin-top: 18px; }
+  input, textarea { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+  footer { padding-block: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .wa { position: fixed; right: 18px; bottom: 18px; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.25); z-index: 20; }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (max-width: 760px) { nav .links { display: none; } .contact { grid-template-columns: 1fr; } section { padding-block: 60px; } }
+</style>
+<link rel="stylesheet" href="glass.css">
+<script src="glass.js" defer></script>
+</head>
+<body>
+<nav><div class="wrap"><b id="nName"></b><div class="links"><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div><a class="btn" id="nCall">Call Now</a></div></nav>
+
+<header class="hero" id="hero"><div class="wrap">
+  <span class="chip" id="hType"></span>
+  <h1 id="hName"></h1>
+  <p id="hTag"></p>
+  <div class="ctas"><a class="btn" id="hWa">Enquire on WhatsApp</a><a class="btn ghost" href="#contact">View location</a></div>
+  <div class="stats"><div><strong id="sRating"></strong>Google rating</div><div><strong id="sReviews"></strong>Happy reviews</div><div><strong id="sTime"></strong>Timing</div></div>
+</div></header>
+
+<section id="services"><div class="wrap">
+  <div class="head reveal"><small>Our services</small><h2>What we offer</h2></div>
+  <div class="grid" id="svc"></div>
+</div></section>
+
+<section id="gallery" style="background:#fff"><div class="wrap">
+  <div class="head reveal"><small>Gallery</small><h2>A look inside</h2></div>
+  <div class="gallery" id="gal"></div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+  <div class="head reveal"><small>Reviews</small><h2>What our customers say</h2></div>
+  <p style="margin:-20px 0 24px;color:var(--muted);font-size:.9rem">Sample reviews for this demo — your real Google reviews will appear here.</p>
+  <div class="grid" id="rev"></div>
+</div></section>
+
+<section id="contact" style="background:#fff"><div class="wrap contact">
+  <div class="info reveal">
+    <div class="head"><small>Contact</small><h2>Visit us</h2></div>
+    <p>📍 <span id="cAddr"></span></p>
+    <p>🕒 <span id="cTime"></span></p>
+    <p>📞 <a id="cPhone"></a></p>
+    <form id="enq">
+      <input name="n" placeholder="Your name" required>
+      <textarea name="m" rows="3" placeholder="How can we help?" required></textarea>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+  <iframe id="map" loading="lazy" title="Map"></iframe>
+</div></section>
+
+<footer><div class="wrap" id="foot"></div></footer>
+<a class="wa" id="fWa" aria-label="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+
+<script>
+const $ = id => document.getElementById(id);
+const wa = (msg = `Hello ${BIZ.name}, I would like to make an enquiry.`) => `https://wa.me/${BIZ.phone}?text=${encodeURIComponent(msg)}`;
+document.title = `${BIZ.name} | ${BIZ.type}`;
+document.documentElement.style.setProperty('--accent', BIZ.accent);
+$('nName').textContent = $('hName').textContent = BIZ.name;
+$('hType').textContent = `⭐ ${BIZ.rating} · ${BIZ.type}`;
+$('hTag').textContent = BIZ.tagline;
+$('hero').style.backgroundImage = `url('${BIZ.heroImg}')`;
+$('sRating').textContent = BIZ.rating + '★';
+$('sReviews').textContent = BIZ.reviews;
+$('sTime').textContent = BIZ.timing.replace(/^.*?:\s*/, '');
+$('nCall').href = `tel:+${BIZ.phone}`;
+$('hWa').href = $('fWa').href = wa();
+$('svc').innerHTML = BIZ.services.map(s => `<div class="card reveal"><h3>${s.title}</h3><p>${s.desc}</p><span class="price">${s.price}</span></div>`).join('');
+$('gal').innerHTML = BIZ.gallery.map(g => `<img class="reveal" src="${g}" alt="${BIZ.name}" loading="lazy">`).join('');
+$('rev').innerHTML = BIZ.testimonials.map(t => `<div class="card quote reveal">“${t.text}”<span>— ${t.by}</span></div>`).join('');
+$('cAddr').textContent = BIZ.address;
+$('cTime').textContent = BIZ.timing;
+$('cPhone').textContent = BIZ.phoneDisplay; $('cPhone').href = `tel:+${BIZ.phone}`;
+$('map').src = `https://www.google.com/maps?q=${encodeURIComponent(BIZ.mapQuery)}&output=embed`;
+$('foot').textContent = `© ${new Date().getFullYear()} ${BIZ.name} · ${BIZ.address}`;
+$('enq').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  window.open(wa(`Hello ${BIZ.name}, this is ${f.get('n')}. ${f.get('m')}`), '_blank');
+});
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
