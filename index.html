@@ -48,19 +48,19 @@ const BIZ = {
 /* Customize from link: ?k=salon&n=Krushna's+Hair+Studio&p=918530066059&a=Baner,+Pune&r=5.0&v=531 */
 const U = 'https://images.unsplash.com/photo-';
 const PRESETS = {
-  salon: { type: "Unisex Salon", accent: "#9d174d", tagline: "Haircuts, colour, skincare and bridal — all under one roof, in expert hands.",
+  salon: { type: "Unisex Salon", timing: "Daily: 10:00 AM – 9:00 PM", testimonials: [{text:"Best haircut I have had in Pune. The stylists really listen.",by:"Sneha R."},{text:"Clean, hygienic and very professional staff.",by:"Rohit M."},{text:"Did my bridal makeup here and everyone loved the look.",by:"Pooja D."}], accent: "#9d174d", tagline: "Haircuts, colour, skincare and bridal — all under one roof, in expert hands.",
     heroImg: U+"1560066984-138dadb4c035?w=1600&q=70",
     services: [["Haircut & Styling","Latest styles for men, women and kids.","From ₹300"],["Hair Colour","Global, highlights, balayage.","From ₹1,200"],["Keratin / Smoothening","Frizz-free, smooth, shiny hair.","From ₹3,500"],["Facial & Cleanup","Glowing skin, for every skin type.","From ₹800"],["Bridal Makeup","The perfect look for your big day.","Call us"],["Manicure & Pedicure","Relax and get pampered.","From ₹600"]],
     gallery: ["1522337360788-8b13dee7a37e","1562322140-8baeececf3df","1595476108010-b4d1f102b1b1","1633681926022-84c23e8cb2d6"] },
-  clinic: { type: "Clinic", accent: "#0f766e", tagline: "Trusted care from experienced doctors, right in your neighbourhood.",
+  clinic: { type: "Dental Clinic", timing: "Mon–Sat: 10:00 AM – 8:30 PM", testimonials: [{text:"Completely painless root canal. The doctor explained everything clearly.",by:"Vikram S."},{text:"Very clean clinic and friendly staff. Highly recommended.",by:"Anjali P."},{text:"Got my braces here, the results are amazing.",by:"Karan T."}], accent: "#0f766e", tagline: "Trusted care from experienced doctors, right in your neighbourhood.",
     heroImg: U+"1629909613654-28e377c37b09?w=1600&q=70",
     services: [["Consultation","Thorough check-up and honest advice.","₹500"],["Dental Cleaning","Scaling & polishing.","From ₹1,000"],["Root Canal","Painless treatment.","Call us"],["Braces & Aligners","Straight teeth, confident smile.","Call us"],["Teeth Whitening","A brighter smile in one sitting.","From ₹4,000"],["Emergency Care","In pain? Walk in right away.","Call us"]],
     gallery: ["1588776814546-1ffcf47267a5","1606811971618-4486d14f3f99","1598256989800-fe5f95da9787","1629909615184-74f495363b67"] },
-  gym: { type: "Gym & Fitness", accent: "#b91c1c", tagline: "Modern equipment, certified trainers, and results you can see.",
+  gym: { type: "Gym & Fitness", timing: "Daily: 5:30 AM – 10:30 PM", testimonials: [{text:"Lost 8 kg in 3 months with the trainers here.",by:"Nikhil J."},{text:"Great equipment and never too crowded.",by:"Shruti K."},{text:"Trainers actually care about your form and progress.",by:"Arjun B."}], accent: "#b91c1c", tagline: "Modern equipment, certified trainers, and results you can see.",
     heroImg: U+"1534438327276-14e5300c3a48?w=1600&q=70",
     services: [["Monthly Membership","Full gym access.","₹1,500/mo"],["Personal Training","One-on-one sessions with a trainer.","Call us"],["Weight Loss Program","Diet + workout plan.","Call us"],["Strength Training","Proper form, safe progress.","Included"],["Cardio Zone","Treadmill, cycle, cross-trainer.","Included"],["Diet Consultation","A plan built around your goals.","₹999"]],
     gallery: ["1571019613454-1cb2f99b2d8b","1517836357463-d25dfeac3438","1540497077202-7c8a3999166f","1583454110551-21f2fa2afe61"] },
-  coaching: { type: "Coaching Classes", accent: "#1d4ed8", tagline: "Clear concepts, better marks — small batches, personal attention.",
+  coaching: { type: "Coaching Classes", timing: "Mon–Sat: 7:00 AM – 9:00 PM", testimonials: [{text:"My son's maths marks went from 60 to 90 in one year.",by:"Mrs. Kulkarni"},{text:"Small batches, so every student gets attention.",by:"Aditya G."},{text:"Teachers are patient and explain concepts clearly.",by:"Riya S."}], accent: "#1d4ed8", tagline: "Clear concepts, better marks — small batches, personal attention.",
     heroImg: U+"1427504494785-3a9ca7044f45?w=1600&q=70",
     services: [["Class 8–10","Maths, Science, English.","Call us"],["Class 11–12","Science & Commerce.","Call us"],["JEE / NEET Foundation","Strong base, early start.","Call us"],["Weekly Tests","Regular progress checks.","Included"],["Doubt Sessions","Every doubt answered.","Included"],["Free Demo Class","Try a class before you join.","Free"]],
     gallery: ["1509062522246-3755977927d7","1427504494785-3a9ca7044f45","1503676260728-1c00da094a0b","1497633762265-9d179a990aa6"] }
@@ -154,6 +154,7 @@ const PRESETS = {
 
 <section id="reviews"><div class="wrap">
   <div class="head reveal"><small>Reviews</small><h2>What our customers say</h2></div>
+  <p style="margin:-20px 0 24px;color:var(--muted);font-size:.9rem">Sample reviews for this demo — your real Google reviews will appear here.</p>
   <div class="grid" id="rev"></div>
 </div></section>
 
