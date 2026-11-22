@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #b45309; --ink: #1c1917; --muted: #57534e; --veg: #16a34a; --nonveg: #b91c1c;
+          --glass: rgba(255,255,255,.42); --edge: rgba(255,255,255,.75); --blur: blur(22px) saturate(185%); }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body { margin: 0; font: 15px/1.5 Inter, system-ui, sans-serif; color: var(--ink); background: #fbf7f2; padding-bottom: 110px; }
+  body::before { content: ""; position: fixed; inset: -20vmax; z-index: -1; pointer-events: none; filter: blur(30px);
+    background: radial-gradient(36vmax 36vmax at 10% 15%, rgba(245,158,11,.45), transparent 70%),
+                radial-gradient(32vmax 32vmax at 90% 30%, rgba(244,63,94,.28), transparent 70%),
+                radial-gradient(40vmax 40vmax at 60% 95%, rgba(250,204,21,.32), transparent 70%);
+    animation: drift 22s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translate3d(3vmax, -2vmax, 0) rotate(6deg); } }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; margin: 0; line-height: 1.15; }
+  .glass { background: var(--glass); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
+           border: 1px solid var(--edge); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 12px 34px -14px rgba(28,25,23,.25); }
+  .wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; }
+
+  header { position: relative; height: 230px; color: #fff; background: #000 center/cover; border-radius: 0 0 28px 28px; overflow: hidden; }
+  header::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.72)); }
+  header .wrap { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 20px; }
+  header h1 { font-size: 2rem; }
+  header p { margin: 4px 0 0; opacity: .9; font-size: .92rem; }
+  .table-chip { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px; z-index: 2; padding: 6px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem;
+                background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.5); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+
+  .tools { position: sticky; top: 0; z-index: 10; padding: 10px 0 8px; margin-top: 12px; }
+  .tools .bar { border-radius: 20px; padding: 10px; }
+  .search { display: flex; gap: 8px; }
+  .search input { flex: 1; font: inherit; padding: 11px 14px; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.6); }
+  .vegtoggle { display: flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 14px; border: 1px solid var(--edge); background: rgba(255,255,255,.6); font-weight: 600; font-size: .85rem; cursor: pointer; user-select: none; }
+  .vegtoggle input { accent-color: var(--veg); }
+  .cats { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; scrollbar-width: none; }
+  .cats::-webkit-scrollbar { display: none; }
+  .cats button { flex: none; font: inherit; font-weight: 600; font-size: .88rem; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--edge); background: rgba(255,255,255,.5); color: var(--ink); cursor: pointer; }
+  .cats button.on { background: var(--brand); color: #fff; border-color: transparent; }
+
+  section { padding-top: 18px; scroll-margin-top: 150px; }
+  section h2 { font-size: 1.35rem; margin: 6px 4px 12px; }
+  .item { display: grid; grid-template-columns: 1fr 104px; gap: 14px; padding: 14px; border-radius: 22px; margin-bottom: 12px; position: relative; }
+  .item h3 { font-family: Inter, sans-serif; font-size: 1rem; font-weight: 700; display: flex; gap: 8px; align-items: center; }
+  .mark { width: 15px; height: 15px; border: 1.5px solid; border-radius: 3px; display: grid; place-items: center; flex: none; }
+  .mark::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .mark.veg { color: var(--veg); } .mark.nonveg { color: var(--nonveg); }
+  .item p { margin: 4px 0 8px; color: var(--muted); font-size: .88rem; }
+  .price { font-weight: 700; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(180,83,9,.12); color: var(--brand); margin-left: 6px; }
+  .pic { position: relative; }
+  .pic img, .pic .ph { width: 104px; height: 104px; border-radius: 16px; object-fit: cover; display: block; }
+  .pic .ph { display: grid; place-items: center; font-size: 2.4rem; background: rgba(255,255,255,.6); }
+  .add { position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); min-width: 84px; height: 34px; border-radius: 12px; border: 1px solid rgba(255,255,255,.9);
+         background: #fff; color: var(--veg); font: inherit; font-weight: 800; cursor: pointer; box-shadow: 0 6px 16px -6px rgba(0,0,0,.3); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; }
+  .add.empty { justify-content: center; }
+  .add span { min-width: 18px; text-align: center; }
+  .add b { cursor: pointer; padding: 0 4px; font-size: 1.1rem; }
+
+  .cartbar { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 20; max-width: 736px; margin: 0 auto;
+             border-radius: 20px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+             background: color-mix(in srgb, var(--brand) 85%, transparent); color: #fff; -webkit-backdrop-filter: blur(16px) saturate(180%); backdrop-filter: blur(16px) saturate(180%);
+             border: 1px solid rgba(255,255,255,.4); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 16px 34px -10px rgba(180,83,9,.6);
+             transform: translateY(150%); transition: transform .3s ease; }
+  .cartbar.show { transform: none; }
+  .cartbar small { display: block; opacity: .85; }
+  .cartbar button { font: inherit; font-weight: 800; border: 0; border-radius: 14px; padding: 11px 16px; background: #fff; color: var(--brand); cursor: pointer; }
+
+  .sheet-bg { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 30; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .sheet-bg.show { opacity: 1; pointer-events: auto; }
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 31; max-width: 760px; margin: 0 auto; border-radius: 26px 26px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+           background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%);
+           transform: translateY(105%); transition: transform .3s ease; max-height: 85vh; overflow: auto; }
+  .sheet.show { transform: none; }
+  .sheet h2 { font-size: 1.3rem; margin-bottom: 12px; }
+  .line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,.1); }
+  .total { display: flex; justify-content: space-between; font-weight: 800; padding: 12px 0; font-size: 1.05rem; }
+  .sheet input, .sheet textarea { width: 100%; font: inherit; padding: 11px 14px; border-radius: 14px; border: 1px solid rgba(0,0,0,.1); background: rgba(255,255,255,.8); margin-bottom: 10px; }
+  .send { width: 100%; font: inherit; font-weight: 800; border: 0; border-radius: 16px; padding: 14px; background: #25d366; color: #fff; cursor: pointer; font-size: 1rem; }
+  .empty-msg { text-align: center; color: var(--muted); padding: 30px 0; }
+  footer { text-align: center; color: var(--muted); font-size: .8rem; padding: 24px 0 10px; }
+  @media (prefers-reduced-motion: reduce) { body::before { animation: none; } }
+</style>
+</head>
+<body>
+<header id="hero">
+  <span class="table-chip" id="tableChip" hidden></span>
+  <div class="wrap">
+    <h1 id="rName"></h1>
+    <p id="rSub"></p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tools">
+    <div class="bar glass">
+      <div class="search">
+        <input id="q" type="search" placeholder="Search dishes…" aria-label="Search dishes">
+        <label class="vegtoggle"><input type="checkbox" id="vegOnly"> Veg only</label>
+      </div>
+      <nav class="cats" id="cats"></nav>
+    </div>
+  </div>
+  <main id="menu"></main>
+  <footer id="foot"></footer>
+</div>
+
+<div class="cartbar" id="cartbar">
+  <div><b id="cCount"></b><small id="cTotal"></small></div>
+  <button id="viewCart">View order →</button>
+</div>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Your order">
+  <h2>Your order</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="sTotal"></span></div>
+  <input id="cName" placeholder="Your name">
+  <input id="cTable" placeholder="Table number">
+  <textarea id="cNote" rows="2" placeholder="Any request? (less spicy, no onion…)"></textarea>
+  <button class="send" id="sendWa">Send order on WhatsApp</button>
+</div>
+
+<script>
+/* Customize from link: menu.html?n=Restaurant+Name&p=919999999999&a=Baner,+Pune&t=5 */
+const q = new URLSearchParams(location.search);
+const R = {
+  name: q.get('n') || 'Spice Route Kitchen',
+  phone: q.get('p') || '919999999999',
+  area: q.get('a') || 'Baner, Pune',
+  table: q.get('t') || ''
+};
+const U = id => `https://images.unsplash.com/photo-${id}?w=240&h=240&fit=crop&q=70`;
+// [name, description, price, veg?, photoId or emoji, tag]
+const MENU = {
+  'Starters': [
+    ['Paneer Tikka', 'Cottage cheese, peppers and onion, chargrilled in the tandoor.', 280, 1, '1567188040759-fb8a883dc6d8', 'Bestseller'],
+    ['Punjabi Samosa (2 pcs)', 'Crisp pastry with spiced potato filling, mint chutney.', 80, 1, '1601050690597-df0568f70950'],
+    ['Chicken Seekh Kebab', 'Minced chicken skewers with herbs, smoky and juicy.', 320, 0, '1599487488170-d11ec9c172f0'],
+    ['Crispy Fried Chicken', 'Buttermilk-marinated, golden fried, spicy dip.', 340, 0, '1626082927389-6cd097cdc6ec'],
+  ],
+  'Street Food': [
+    ['Pav Bhaji', 'Buttery mashed vegetable curry with toasted pav.', 160, 1, '1606491956689-2ea866880c84', 'Chef\'s pick'],
+    ['Ragda Chaat', 'White peas, chutneys, onion, sev and fresh coriander.', 120, 1, '1610192244261-3f33de3f55e4'],
+  ],
+  'Main Course': [
+    ['Butter Chicken', 'Tandoori chicken in a silky tomato-butter gravy.', 380, 0, '1565557623262-b51c2513a641', 'Bestseller'],
+    ['Chicken Tikka Masala', 'Smoky chicken tikka in a rich onion-tomato masala.', 360, 0, '1631452180519-c014fe946bc7'],
+    ['Paneer Butter Masala', 'Soft paneer cubes in a creamy, mildly sweet gravy.', 300, 1, '1588166524941-3bf61a9c41db'],
+    ['Veg Thali', 'Dal, two sabzis, rice, roti, salad, papad and dessert.', 260, 1, '1585937421612-70a008356fbe', 'Value'],
+  ],
+  'Biryani & Rice': [
+    ['Chicken Dum Biryani', 'Slow-cooked basmati with tender chicken, raita.', 340, 0, '1589302168068-964664d93dc0', 'Bestseller'],
+    ['Veg Biryani', 'Fragrant basmati with seasonal vegetables, raita.', 260, 1, '1645177628172-a94c1f96e6db'],
+    ['Jeera Rice', 'Basmati tempered with cumin and ghee.', 150, 1, '🍚'],
+  ],
+  'Breads': [
+    ['Butter Naan', 'Soft tandoor-baked naan brushed with butter.', 60, 1, '🫓'],
+    ['Garlic Naan', 'Naan topped with garlic and coriander.', 75, 1, '🧄'],
+    ['Tandoori Roti', 'Whole-wheat roti from the tandoor.', 35, 1, '🫓'],
+  ],
+  'Beverages': [
+    ['Masala Chai', 'Ginger-cardamom chai, brewed fresh.', 40, 1, '1517487881594-2787fef5ebf7'],
+    ['Sweet Lassi', 'Thick, chilled yoghurt drink.', 90, 1, '🥛'],
+    ['Fresh Lime Soda', 'Sweet, salted or mixed.', 80, 1, '🍋'],
+  ],
+  'Desserts': [
+    ['Tiramisu Jar', 'Coffee-soaked sponge, mascarpone cream, cocoa.', 220, 1, '1571877227200-a0d98ea607e9'],
+    ['Gulab Jamun (2 pcs)', 'Warm milk dumplings in rose-cardamom syrup.', 90, 1, '🍯'],
+  ]
+};
+const $ = id => document.getElementById(id);
+const inr = n => '₹' + n.toLocaleString('en-IN');
+const cart = {};
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+document.title = `${R.name} · Menu`;
+$('rName').textContent = R.name;
+$('rSub').textContent = `${R.area} · Order from your table on WhatsApp`;
+$('hero').style.backgroundImage = `url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=70')`;
+if (R.table) { $('tableChip').hidden = false; $('tableChip').textContent = 'Table ' + R.table; $('cTable').value = R.table; }
+$('foot').textContent = `${R.name} · Prices include taxes · Digital menu`;
+
+function render() {
+  const term = $('q').value.trim().toLowerCase();
+  const veg = $('vegOnly').checked;
+  let html = '';
+  for (const [cat, items] of Object.entries(MENU)) {
+    const list = items.filter(i => (!veg || i[3]) && (!term || (i[0] + ' ' + i[1]).toLowerCase().includes(term)));
+    if (!list.length) continue;
+    html += `<section id="c-${slug(cat)}"><h2>${cat}</h2>` + list.map(([n, d, p, v, img, tag]) => {
+      const k = n, qty = cart[k]?.qty || 0;
+      const pic = /^\d/.test(img) ? `<img src="${U(img)}" alt="${n}" loading="lazy">` : `<div class="ph">${img}</div>`;
+      const btn = qty ? `<div class="add" data-k="${k}"><b data-d="-1">−</b><span>${qty}</span><b data-d="1">+</b></div>`
+                      : `<button class="add empty" data-k="${k}" data-d="1">ADD</button>`;
+      return `<div class="item glass"><div><h3><span class="mark ${v ? 'veg' : 'nonveg'}" aria-label="${v ? 'Veg' : 'Non-veg'}"></span>${n}</h3><p>${d}</p><span class="price">${inr(p)}</span>${tag ? `<span class="tag">${tag}</span>` : ''}</div><div class="pic">${pic}${btn}</div></div>`;
+    }).join('') + `</section>`;
+  }
+  $('menu').innerHTML = html || '<p class="empty-msg">No dishes match your search.</p>';
+  $('cats').innerHTML = Object.keys(MENU).map(c => `<button data-c="${slug(c)}">${c}</button>`).join('');
+  updateBar();
+}
+function find(k) { for (const items of Object.values(MENU)) for (const i of items) if (i[0] === k) return i; }
+function change(k, d) {
+  const it = find(k); const cur = cart[k]?.qty || 0; const n = Math.max(0, cur + d);
+  if (n) cart[k] = { qty: n, price: it[2] }; else delete cart[k];
+  render(); if ($('sheet').classList.contains('show')) fillSheet();
+}
+function totals() { let c = 0, t = 0; for (const v of Object.values(cart)) { c += v.qty; t += v.qty * v.price; } return { c, t }; }
+function updateBar() {
+  const { c, t } = totals();
+  $('cartbar').classList.toggle('show', c > 0);
+  $('cCount').textContent = `${c} item${c > 1 ? 's' : ''}`; $('cTotal').textContent = inr(t);
+}
+function fillSheet() {
+  const { t } = totals();
+  $('lines').innerHTML = Object.entries(cart).map(([k, v]) => `<div class="line"><span>${v.qty} × ${k}</span><span>${inr(v.qty * v.price)}</span></div>`).join('') || '<p class="empty-msg">Your order is empty.</p>';
+  $('sTotal').textContent = inr(t);
+}
+function openSheet(on) { if (on) fillSheet(); $('sheet').classList.toggle('show', on); $('sheetBg').classList.toggle('show', on); }
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-d]');
+  if (b) { const k = b.dataset.k || b.closest('[data-k]').dataset.k; change(k, +b.dataset.d); return; }
+  const c = e.target.closest('[data-c]');
+  if (c) { document.querySelectorAll('.cats button').forEach(x => x.classList.toggle('on', x === c)); $('c-' + c.dataset.c)?.scrollIntoView({ behavior: 'smooth' }); }
+});
+$('q').addEventListener('input', render);
+$('vegOnly').addEventListener('change', render);
+$('viewCart').addEventListener('click', () => openSheet(true));
+$('sheetBg').addEventListener('click', () => openSheet(false));
+$('sendWa').addEventListener('click', () => {
+  const { c, t } = totals(); if (!c) return;
+  const lines = Object.entries(cart).map(([k, v]) => `• ${v.qty} × ${k} — ${inr(v.qty * v.price)}`).join('\n');
+  const tbl = $('cTable').value.trim(), name = $('cName').value.trim(), note = $('cNote').value.trim();
+  const msg = `🧾 New order — ${R.name}\n${tbl ? 'Table: ' + tbl + '\n' : ''}${name ? 'Name: ' + name + '\n' : ''}\n${lines}\n\nTotal: ${inr(t)}${note ? '\nNote: ' + note : ''}`;
+  window.open(`https://wa.me/${R.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+});
+render();
+</script>
+</body>
+</html>

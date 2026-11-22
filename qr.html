@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Table Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.5 Inter, system-ui, sans-serif; color: #1c1917; background: #f5f0ea; padding: 24px 16px; }
+  .top { max-width: 1000px; margin: 0 auto 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; }
+  .top h1 { font-family: Fraunces, serif; margin: 0; }
+  .top p { margin: 4px 0 0; color: #57534e; }
+  .top a, .top button { font: inherit; font-weight: 700; padding: 10px 16px; border-radius: 12px; border: 0; background: #b45309; color: #fff; text-decoration: none; cursor: pointer; }
+  .grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  .card { background: linear-gradient(160deg, #fff, #fff7ed); border: 1px solid #fed7aa; border-radius: 22px; padding: 20px; text-align: center; break-inside: avoid; }
+  .card h2 { font-family: Fraunces, serif; font-size: 1.2rem; margin: 0 0 4px; }
+  .card .tbl { display: inline-block; font-weight: 700; font-size: .85rem; background: #b45309; color: #fff; border-radius: 999px; padding: 3px 12px; margin-bottom: 12px; }
+  .qr { display: grid; place-items: center; padding: 12px; background: #fff; border-radius: 16px; margin: 0 auto 12px; width: fit-content; }
+  .card p { margin: 0; font-size: .85rem; color: #57534e; }
+  .card b { color: #1c1917; }
+  @media print { body { background: #fff; padding: 0; } .top { display: none; } .grid { gap: 10px; } }
+</style>
+</head>
+<body>
+<div class="top">
+  <div><h1 id="title"></h1><p>Print these and place one on each table. Scanning opens the menu with the table number filled in.</p></div>
+  <a id="open" target="_blank">Open menu</a>
+</div>
+<div class="grid" id="grid"></div>
+<script>
+/* qr.html?n=Restaurant+Name&p=919999999999&a=Baner,+Pune&tables=12 */
+const q = new URLSearchParams(location.search);
+const n = q.get('n') || 'Spice Route Kitchen', p = q.get('p') || '919999999999', a = q.get('a') || 'Baner, Pune';
+const tables = Math.min(+q.get('tables') || 8, 60);
+const base = new URL('menu.html', location.href);
+const link = t => { const u = new URL(base); u.search = new URLSearchParams({ n, p, a, ...(t ? { t } : {}) }); return u.toString(); };
+document.title = `${n} · QR Table Cards`;
+document.getElementById('title').textContent = `${n} — QR table cards`;
+document.getElementById('open').href = link('');
+const grid = document.getElementById('grid');
+for (let t = 1; t <= tables; t++) {
+  const c = document.createElement('div'); c.className = 'card';
+  c.innerHTML = `<h2></h2><span class="tbl">Table ${t}</span><div class="qr"></div><p><b>Scan to see the menu</b><br>Order on WhatsApp from your table</p>`;
+  c.querySelector('h2').textContent = n;
+  grid.appendChild(c);
+  new QRCode(c.querySelector('.qr'), { text: link(t), width: 160, height: 160, correctLevel: QRCode.CorrectLevel.M });
+}
+</script>
+</body>
+</html>
