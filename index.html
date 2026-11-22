@@ -12,24 +12,24 @@
    ============================================================ */
 const BIZ = {
   name: "Chai Adda Cafe",
-  tagline: "Kadak chai, garam snacks, aur dosto ke saath achha time.",
+  tagline: "Strong chai, hot snacks, and good times with friends.",
   type: "Cafe & Snacks",
   phone: "919999999999",            // WhatsApp number, 91 ke saath, bina + ke
   phoneDisplay: "+91 99999 99999",
   address: "Shop 4, Main Road, Near Bus Stand, Your City",
   mapQuery: "Main Road Bus Stand",   // Google Maps search text
-  timing: "Roz: 8:00 AM – 11:00 PM",
+  timing: "Daily: 8:00 AM – 11:00 PM",
   rating: "4.6",
   reviews: "320+",
   accent: "#c2410c",                 // brand color
   heroImg: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=70",
   services: [
-    { title: "Special Masala Chai", desc: "Adrak-elaichi wali, roz fresh.", price: "₹20" },
-    { title: "Bun Maska", desc: "Soft bun, extra butter.", price: "₹35" },
-    { title: "Cold Coffee", desc: "Thick, creamy, ice-cold.", price: "₹80" },
-    { title: "Veg Sandwich", desc: "Grilled, cheese ke saath.", price: "₹90" },
-    { title: "Maggi Specials", desc: "5 flavours, har mood ke liye.", price: "₹60" },
-    { title: "Party Orders", desc: "Office & birthday ke liye bulk order.", price: "Call karein" }
+    { title: "Special Masala Chai", desc: "Ginger-cardamom chai, brewed fresh every day.", price: "₹20" },
+    { title: "Bun Maska", desc: "Soft bun with generous butter.", price: "₹35" },
+    { title: "Cold Coffee", desc: "Thick, creamy and ice-cold.", price: "₹80" },
+    { title: "Veg Sandwich", desc: "Grilled, loaded with cheese.", price: "₹90" },
+    { title: "Maggi Specials", desc: "5 flavours for every mood.", price: "₹60" },
+    { title: "Party Orders", desc: "Bulk orders for office and birthday parties.", price: "Call us" }
   ],
   gallery: [
     "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=70",
@@ -38,31 +38,31 @@ const BIZ = {
     "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=70"
   ],
   testimonials: [
-    { text: "Area ki sabse achhi chai. Roz shaam ko yahin milte hain.", by: "Rahul S." },
-    { text: "Party order time pe aaya aur sab ko pasand aaya.", by: "Priya K." },
-    { text: "Saaf jagah, achha staff, sasta aur tasty.", by: "Amit P." }
+    { text: "Best chai in the area. We meet here every evening.", by: "Rahul S." },
+    { text: "Our party order arrived on time and everyone loved it.", by: "Priya K." },
+    { text: "Clean place, friendly staff, tasty and affordable.", by: "Amit P." }
   ]
 };
 /* ============================================================ */
 
-/* Link se customize: ?k=salon&n=Krushna's+Hair+Studio&p=918530066059&a=Baner,+Pune&r=5.0&v=531 */
+/* Customize from link: ?k=salon&n=Krushna's+Hair+Studio&p=918530066059&a=Baner,+Pune&r=5.0&v=531 */
 const U = 'https://images.unsplash.com/photo-';
 const PRESETS = {
-  salon: { type: "Unisex Salon", accent: "#9d174d", tagline: "Haircut, colour, skin aur bridal — sab ek hi jagah, expert haathon mein.",
+  salon: { type: "Unisex Salon", accent: "#9d174d", tagline: "Haircuts, colour, skincare and bridal — all under one roof, in expert hands.",
     heroImg: U+"1560066984-138dadb4c035?w=1600&q=70",
-    services: [["Haircut & Styling","Men, women, kids — latest styles.","₹300 se"],["Hair Colour","Global, highlights, balayage.","₹1,200 se"],["Keratin / Smoothening","Frizz-free, shiny hair.","₹3,500 se"],["Facial & Cleanup","Glow wala skin, har skin type ke liye.","₹800 se"],["Bridal Makeup","Shaadi ke din ke liye perfect look.","Call karein"],["Manicure & Pedicure","Relax karo, pamper ho jao.","₹600 se"]],
+    services: [["Haircut & Styling","Latest styles for men, women and kids.","From ₹300"],["Hair Colour","Global, highlights, balayage.","From ₹1,200"],["Keratin / Smoothening","Frizz-free, smooth, shiny hair.","From ₹3,500"],["Facial & Cleanup","Glowing skin, for every skin type.","From ₹800"],["Bridal Makeup","The perfect look for your big day.","Call us"],["Manicure & Pedicure","Relax and get pampered.","From ₹600"]],
     gallery: ["1522337360788-8b13dee7a37e","1562322140-8baeececf3df","1595476108010-b4d1f102b1b1","1633681926022-84c23e8cb2d6"] },
-  clinic: { type: "Clinic", accent: "#0f766e", tagline: "Bharosemand ilaaj, experienced doctor, aur aapke paas hi.",
+  clinic: { type: "Clinic", accent: "#0f766e", tagline: "Trusted care from experienced doctors, right in your neighbourhood.",
     heroImg: U+"1629909613654-28e377c37b09?w=1600&q=70",
-    services: [["Consultation","Detail mein checkup aur sahi salah.","₹500"],["Dental Cleaning","Scaling & polishing.","₹1,000 se"],["Root Canal","Painless treatment.","Call karein"],["Braces & Aligners","Seedhe daant, confident smile.","Call karein"],["Teeth Whitening","Ek sitting mein chamak.","₹4,000 se"],["Emergency Care","Dard ho to turant aaiye.","Call karein"]],
+    services: [["Consultation","Thorough check-up and honest advice.","₹500"],["Dental Cleaning","Scaling & polishing.","From ₹1,000"],["Root Canal","Painless treatment.","Call us"],["Braces & Aligners","Straight teeth, confident smile.","Call us"],["Teeth Whitening","A brighter smile in one sitting.","From ₹4,000"],["Emergency Care","In pain? Walk in right away.","Call us"]],
     gallery: ["1588776814546-1ffcf47267a5","1606811971618-4486d14f3f99","1598256989800-fe5f95da9787","1629909615184-74f495363b67"] },
-  gym: { type: "Gym & Fitness", accent: "#b91c1c", tagline: "Modern machines, certified trainers, aur results jo dikhte hain.",
+  gym: { type: "Gym & Fitness", accent: "#b91c1c", tagline: "Modern equipment, certified trainers, and results you can see.",
     heroImg: U+"1534438327276-14e5300c3a48?w=1600&q=70",
-    services: [["Monthly Membership","Full gym access.","₹1,500/mo"],["Personal Training","1-on-1 trainer ke saath.","Call karein"],["Weight Loss Program","Diet + workout plan.","Call karein"],["Strength Training","Proper form, safe progress.","Included"],["Cardio Zone","Treadmill, cycle, cross-trainer.","Included"],["Diet Consultation","Aapke goal ke hisaab se plan.","₹999"]],
+    services: [["Monthly Membership","Full gym access.","₹1,500/mo"],["Personal Training","One-on-one sessions with a trainer.","Call us"],["Weight Loss Program","Diet + workout plan.","Call us"],["Strength Training","Proper form, safe progress.","Included"],["Cardio Zone","Treadmill, cycle, cross-trainer.","Included"],["Diet Consultation","A plan built around your goals.","₹999"]],
     gallery: ["1571019613454-1cb2f99b2d8b","1517836357463-d25dfeac3438","1540497077202-7c8a3999166f","1583454110551-21f2fa2afe61"] },
-  coaching: { type: "Coaching Classes", accent: "#1d4ed8", tagline: "Concepts clear, marks better — chhote batch, personal attention.",
+  coaching: { type: "Coaching Classes", accent: "#1d4ed8", tagline: "Clear concepts, better marks — small batches, personal attention.",
     heroImg: U+"1427504494785-3a9ca7044f45?w=1600&q=70",
-    services: [["Class 8–10","Maths, Science, English.","Call karein"],["Class 11–12","Science & Commerce.","Call karein"],["JEE / NEET Foundation","Strong base, early start.","Call karein"],["Weekly Tests","Progress ka regular check.","Included"],["Doubt Sessions","Har doubt ka solution.","Included"],["Free Demo Class","Pehle dekho, phir join karo.","Free"]],
+    services: [["Class 8–10","Maths, Science, English.","Call us"],["Class 11–12","Science & Commerce.","Call us"],["JEE / NEET Foundation","Strong base, early start.","Call us"],["Weekly Tests","Regular progress checks.","Included"],["Doubt Sessions","Every doubt answered.","Included"],["Free Demo Class","Try a class before you join.","Free"]],
     gallery: ["1509062522246-3755977927d7","1427504494785-3a9ca7044f45","1503676260728-1c00da094a0b","1497633762265-9d179a990aa6"] }
 };
 (function () {
@@ -138,35 +138,35 @@ const PRESETS = {
   <span class="chip" id="hType"></span>
   <h1 id="hName"></h1>
   <p id="hTag"></p>
-  <div class="ctas"><a class="btn" id="hWa">WhatsApp pe Order / Enquiry</a><a class="btn ghost" href="#contact">Location dekhein</a></div>
+  <div class="ctas"><a class="btn" id="hWa">Enquire on WhatsApp</a><a class="btn ghost" href="#contact">View location</a></div>
   <div class="stats"><div><strong id="sRating"></strong>Google rating</div><div><strong id="sReviews"></strong>Happy reviews</div><div><strong id="sTime"></strong>Timing</div></div>
 </div></header>
 
 <section id="services"><div class="wrap">
-  <div class="head reveal"><small>Hamari services</small><h2>Kya milta hai yahan</h2></div>
+  <div class="head reveal"><small>Our services</small><h2>What we offer</h2></div>
   <div class="grid" id="svc"></div>
 </div></section>
 
 <section id="gallery" style="background:#fff"><div class="wrap">
-  <div class="head reveal"><small>Gallery</small><h2>Ek jhalak</h2></div>
+  <div class="head reveal"><small>Gallery</small><h2>A look inside</h2></div>
   <div class="gallery" id="gal"></div>
 </div></section>
 
 <section id="reviews"><div class="wrap">
-  <div class="head reveal"><small>Customers kehte hain</small><h2>Log humein kyun pasand karte hain</h2></div>
+  <div class="head reveal"><small>Reviews</small><h2>What our customers say</h2></div>
   <div class="grid" id="rev"></div>
 </div></section>
 
 <section id="contact" style="background:#fff"><div class="wrap contact">
   <div class="info reveal">
-    <div class="head"><small>Contact</small><h2>Aaiye milte hain</h2></div>
+    <div class="head"><small>Contact</small><h2>Visit us</h2></div>
     <p>📍 <span id="cAddr"></span></p>
     <p>🕒 <span id="cTime"></span></p>
     <p>📞 <a id="cPhone"></a></p>
     <form id="enq">
-      <input name="n" placeholder="Aapka naam" required>
-      <textarea name="m" rows="3" placeholder="Aapko kya chahiye?" required></textarea>
-      <button class="btn" type="submit">WhatsApp pe bhejein</button>
+      <input name="n" placeholder="Your name" required>
+      <textarea name="m" rows="3" placeholder="How can we help?" required></textarea>
+      <button class="btn" type="submit">Send on WhatsApp</button>
     </form>
   </div>
   <iframe id="map" loading="lazy" title="Map"></iframe>
@@ -177,7 +177,7 @@ const PRESETS = {
 
 <script>
 const $ = id => document.getElementById(id);
-const wa = (msg = `Namaste ${BIZ.name}, mujhe enquiry karni hai.`) => `https://wa.me/${BIZ.phone}?text=${encodeURIComponent(msg)}`;
+const wa = (msg = `Hello ${BIZ.name}, I would like to make an enquiry.`) => `https://wa.me/${BIZ.phone}?text=${encodeURIComponent(msg)}`;
 document.title = `${BIZ.name} | ${BIZ.type}`;
 document.documentElement.style.setProperty('--accent', BIZ.accent);
 $('nName').textContent = $('hName').textContent = BIZ.name;
@@ -200,7 +200,7 @@ $('foot').textContent = `© ${new Date().getFullYear()} ${BIZ.name} · ${BIZ.add
 $('enq').addEventListener('submit', e => {
   e.preventDefault();
   const f = new FormData(e.target);
-  window.open(wa(`Namaste ${BIZ.name}, main ${f.get('n')}. ${f.get('m')}`), '_blank');
+  window.open(wa(`Hello ${BIZ.name}, this is ${f.get('n')}. ${f.get('m')}`), '_blank');
 });
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
