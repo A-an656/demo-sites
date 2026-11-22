@@ -118,7 +118,9 @@
   <h2>Your order</h2>
   <div id="lines"></div>
   <div class="total"><span>Total</span><span id="sTotal"></span></div>
-  <input id="cName" placeholder="Your name">
+  <input id="cName" placeholder="Your name" autocomplete="name">
+  <input id="cPhone" type="tel" inputmode="numeric" placeholder="Your mobile number (10 digits)" autocomplete="tel" maxlength="14">
+  <p id="cErr" style="color:#b91c1c;font-size:.85rem;margin:-4px 0 10px" hidden>Please enter a valid 10-digit mobile number.</p>
   <input id="cTable" placeholder="Table number">
   <textarea id="cNote" rows="2" placeholder="Any request? (less spicy, no onion…)"></textarea>
   <button class="send" id="sendWa">Send order on WhatsApp</button>
@@ -236,7 +238,11 @@ $('sendWa').addEventListener('click', () => {
   const { c, t } = totals(); if (!c) return;
   const lines = Object.entries(cart).map(([k, v]) => `• ${v.qty} × ${k} — ${inr(v.qty * v.price)}`).join('\n');
   const tbl = $('cTable').value.trim(), name = $('cName').value.trim(), note = $('cNote').value.trim();
-  const msg = `🧾 New order — ${R.name}\n${tbl ? 'Table: ' + tbl + '\n' : ''}${name ? 'Name: ' + name + '\n' : ''}\n${lines}\n\nTotal: ${inr(t)}${note ? '\nNote: ' + note : ''}`;
+  const digits = $('cPhone').value.replace(/\D/g, '').replace(/^(91|0)(?=\d{10}$)/, '');
+  if (!/^[6-9]\d{9}$/.test(digits)) { $('cErr').hidden = false; $('cPhone').focus(); return; }
+  $('cErr').hidden = true;
+  const phone = '+91 ' + digits.slice(0, 5) + ' ' + digits.slice(5);
+  const msg = `🧾 New order — ${R.name}\n${tbl ? 'Table: ' + tbl + '\n' : ''}${name ? 'Name: ' + name + '\n' : ''}Mobile: ${phone}\n\n${lines}\n\nTotal: ${inr(t)}${note ? '\nNote: ' + note : ''}`;
   window.open(`https://wa.me/${R.phone}?text=${encodeURIComponent(msg)}`, '_blank');
 });
 render();
