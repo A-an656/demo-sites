@@ -44,6 +44,42 @@ const BIZ = {
   ]
 };
 /* ============================================================ */
+
+/* Link se customize: ?k=salon&n=Krushna's+Hair+Studio&p=918530066059&a=Baner,+Pune&r=5.0&v=531 */
+const U = 'https://images.unsplash.com/photo-';
+const PRESETS = {
+  salon: { type: "Unisex Salon", accent: "#9d174d", tagline: "Haircut, colour, skin aur bridal — sab ek hi jagah, expert haathon mein.",
+    heroImg: U+"1560066984-138dadb4c035?w=1600&q=70",
+    services: [["Haircut & Styling","Men, women, kids — latest styles.","₹300 se"],["Hair Colour","Global, highlights, balayage.","₹1,200 se"],["Keratin / Smoothening","Frizz-free, shiny hair.","₹3,500 se"],["Facial & Cleanup","Glow wala skin, har skin type ke liye.","₹800 se"],["Bridal Makeup","Shaadi ke din ke liye perfect look.","Call karein"],["Manicure & Pedicure","Relax karo, pamper ho jao.","₹600 se"]],
+    gallery: ["1522337360788-8b13dee7a37e","1562322140-8baeececf3df","1595476108010-b4d1f102b1b1","1633681926022-84c23e8cb2d6"] },
+  clinic: { type: "Clinic", accent: "#0f766e", tagline: "Bharosemand ilaaj, experienced doctor, aur aapke paas hi.",
+    heroImg: U+"1629909613654-28e377c37b09?w=1600&q=70",
+    services: [["Consultation","Detail mein checkup aur sahi salah.","₹500"],["Dental Cleaning","Scaling & polishing.","₹1,000 se"],["Root Canal","Painless treatment.","Call karein"],["Braces & Aligners","Seedhe daant, confident smile.","Call karein"],["Teeth Whitening","Ek sitting mein chamak.","₹4,000 se"],["Emergency Care","Dard ho to turant aaiye.","Call karein"]],
+    gallery: ["1588776814546-1ffcf47267a5","1606811971618-4486d14f3f99","1598256989800-fe5f95da9787","1629909615184-74f495363b67"] },
+  gym: { type: "Gym & Fitness", accent: "#b91c1c", tagline: "Modern machines, certified trainers, aur results jo dikhte hain.",
+    heroImg: U+"1534438327276-14e5300c3a48?w=1600&q=70",
+    services: [["Monthly Membership","Full gym access.","₹1,500/mo"],["Personal Training","1-on-1 trainer ke saath.","Call karein"],["Weight Loss Program","Diet + workout plan.","Call karein"],["Strength Training","Proper form, safe progress.","Included"],["Cardio Zone","Treadmill, cycle, cross-trainer.","Included"],["Diet Consultation","Aapke goal ke hisaab se plan.","₹999"]],
+    gallery: ["1571019613454-1cb2f99b2d8b","1517836357463-d25dfeac3438","1540497077202-7c8a3999166f","1583454110551-21f2fa2afe61"] },
+  coaching: { type: "Coaching Classes", accent: "#1d4ed8", tagline: "Concepts clear, marks better — chhote batch, personal attention.",
+    heroImg: U+"1427504494785-3a9ca7044f45?w=1600&q=70",
+    services: [["Class 8–10","Maths, Science, English.","Call karein"],["Class 11–12","Science & Commerce.","Call karein"],["JEE / NEET Foundation","Strong base, early start.","Call karein"],["Weekly Tests","Progress ka regular check.","Included"],["Doubt Sessions","Har doubt ka solution.","Included"],["Free Demo Class","Pehle dekho, phir join karo.","Free"]],
+    gallery: ["1509062522246-3755977927d7","1427504494785-3a9ca7044f45","1503676260728-1c00da094a0b","1497633762265-9d179a990aa6"] }
+};
+(function () {
+  const q = new URLSearchParams(location.search);
+  const p = PRESETS[q.get('k')];
+  if (p) {
+    Object.assign(BIZ, p, {
+      services: p.services.map(([title, desc, price]) => ({ title, desc, price })),
+      gallery: p.gallery.map(id => U + id + "?w=800&q=70")
+    });
+  }
+  if (q.get('n')) BIZ.name = q.get('n');
+  if (q.get('a')) { BIZ.address = q.get('a'); BIZ.mapQuery = BIZ.name + ' ' + q.get('a'); }
+  if (q.get('p')) { BIZ.phone = q.get('p'); BIZ.phoneDisplay = '+' + q.get('p').replace(/^91/, '91 '); }
+  if (q.get('r')) BIZ.rating = q.get('r');
+  if (q.get('v')) BIZ.reviews = q.get('v') + '+';
+})();
 </script>
 <style>
   :root { --accent: #c2410c; --ink: #1c1917; --muted: #57534e; --bg: #fafaf9; --card: #fff; --line: #e7e5e4; }
