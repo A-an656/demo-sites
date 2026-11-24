@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wynkk · QR Table Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 Inter,system-ui,sans-serif;color:#f5f1ea;background:#0a0a0a;padding:24px 16px}
+.top{max-width:1040px;margin:0 auto 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between}
+.top h1{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;margin:0;font-size:2.4rem}
+.top h1 span{color:#ff4a1c}
+.top p{margin:4px 0 0;color:#a8a29e}
+.top a,.top button{font:inherit;font-weight:800;padding:11px 16px;border-radius:12px;border:0;background:linear-gradient(135deg,#ff4a1c,#ff7a1a);color:#fff;text-decoration:none;cursor:pointer}
+.grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:#111;border:2px solid #ff4a1c;border-radius:24px;padding:20px 18px;text-align:center;break-inside:avoid;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:-40% -40% auto auto;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,74,28,.35),transparent 70%)}
+.card img.logo{width:62px;height:62px;border-radius:50%;background:#fff;position:relative}
+.card .hi{font-family:"Permanent Marker",cursive;color:#ff4a1c;font-size:1.05rem;margin:6px 0 2px;position:relative}
+.card .tbl{display:inline-block;font-family:Anton,sans-serif;font-size:1.25rem;letter-spacing:.5px;background:#ffd23f;color:#111;border-radius:999px;padding:2px 16px;margin-bottom:12px;position:relative}
+.qr{display:grid;place-items:center;padding:12px;background:#fff;border-radius:16px;margin:0 auto 12px;width:fit-content;position:relative}
+.card p{margin:0;font-size:.88rem;color:#d6d3d1;position:relative}
+.card b{color:#fff;font-size:1rem}
+.card small{display:block;color:#78716c;margin-top:8px;font-size:.72rem}
+@media print{body{background:#fff;padding:0}.top{display:none}.grid{gap:10px}.card{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div><h1>Wynkk <span>QR table cards</span></h1><p>Print and place one on each table. Scanning opens the menu with the table number filled in.</p></div>
+  <div style="display:flex;gap:8px"><a id="open" target="_blank">Open menu</a><button onclick="print()">🖨️ Print</button></div>
+</div>
+<div class="grid" id="grid"></div>
+<script>
+/* qr.html?tables=20 */
+const q = new URLSearchParams(location.search);
+const tables = Math.min(+q.get('tables') || 12, 80);
+const base = new URL('menu.html', location.href);
+const link = t => { const u = new URL(base); if (t) u.search = new URLSearchParams({ t }); return u.toString(); };
+document.getElementById('open').href = link('');
+const grid = document.getElementById('grid');
+for (let t = 1; t <= tables; t++) {
+  const c = document.createElement('div'); c.className = 'card';
+  c.innerHTML = `<img class="logo" src="img/logo.jpg" alt="Wynkk"><div class="hi">Scan. Order. Chill.</div><span class="tbl">TABLE ${t}</span><div class="qr"></div><p><b>Scan to see the menu</b><br>Order food & drinks on WhatsApp</p><small>Raise a glass. Feel the rhythm.</small>`;
+  grid.appendChild(c);
+  new QRCode(c.querySelector('.qr'), { text: link(t), width: 150, height: 150, colorDark: '#0a0a0a', correctLevel: QRCode.CorrectLevel.M });
+}
+</script>
+</body>
+</html>

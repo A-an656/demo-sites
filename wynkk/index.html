@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wynkk · Kitchen & Bar, Aundh Pune</title>
+<meta name="description" content="Wynkk, Aundh Pune: live music, big-screen sports, cocktails and Pan Asian + Indian food. Centriole Mall, ITI Road.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0a0a0a; --ink:#f5f1ea; --muted:#a8a29e; --hot:#ff4a1c; --hot2:#ff7a1a; --sun:#ffd23f;
+        --glass:rgba(255,255,255,.07); --edge:rgba(255,255,255,.16); }
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;filter:blur(40px);
+  background:radial-gradient(30vmax 30vmax at 15% 20%,rgba(255,74,28,.28),transparent 70%),
+             radial-gradient(28vmax 28vmax at 85% 60%,rgba(255,210,63,.12),transparent 70%),
+             radial-gradient(34vmax 34vmax at 40% 100%,rgba(255,122,26,.18),transparent 70%);
+  animation:drift 20s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(3vmax,-2vmax,0) rotate(5deg)}}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+.glass{background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 20px 40px -20px rgba(0,0,0,.6)}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;text-transform:uppercase;margin:0;line-height:1}
+.marker{font-family:"Permanent Marker",cursive;color:var(--hot);text-transform:none}
+
+/* nav */
+.nav{position:fixed;top:12px;left:12px;right:12px;z-index:50;max-width:1120px;margin:0 auto;border-radius:20px;padding:8px 10px 8px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand img{width:40px;height:40px;border-radius:50%;background:#fff}
+.nav nav{display:flex;gap:4px}
+.nav nav a{text-decoration:none;font-weight:600;font-size:.9rem;padding:8px 12px;border-radius:12px;color:var(--muted)}
+.nav nav a:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;border:0;border-radius:14px;padding:12px 18px;cursor:pointer;font:inherit;font-weight:800}
+.btn.hot{background:linear-gradient(135deg,var(--hot),var(--hot2));color:#fff;box-shadow:0 10px 30px -10px rgba(255,74,28,.8)}
+.btn.ghost{background:rgba(255,255,255,.08);border:1px solid var(--edge);color:var(--ink)}
+.btn.wa{background:#25d366;color:#04210f}
+@media(max-width:760px){.nav nav{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 56px;overflow:hidden}
+.hero .bg{position:absolute;inset:0;background:url(img/crowd.jpg) center/cover;transform:scale(1.08);animation:kb 18s ease-in-out infinite alternate}
+@keyframes kb{to{transform:scale(1.18) translateY(-2%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.55) 45%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}}
+.hero h1{font-size:clamp(3.4rem,11vw,8.5rem);margin:18px 0 6px}
+.hero h1 span{color:var(--hot)}
+.hero p.lead{font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:560px;color:#e7e2da;margin:8px 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.facts div{padding:10px 14px;border-radius:14px;font-size:.9rem;color:var(--muted)}
+.facts b{color:var(--ink);display:block;font-size:1.05rem}
+
+section{padding:90px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.head small{display:block;font-family:"Permanent Marker",cursive;color:var(--hot);font-size:1.1rem;margin-bottom:6px}
+.head h2{font-size:clamp(2.4rem,6vw,4rem)}
+.head p{color:var(--muted);max-width:420px;margin:0}
+
+/* ticker */
+.ticker{border-block:1px solid var(--edge);overflow:hidden;white-space:nowrap;padding:14px 0;background:rgba(255,74,28,.08)}
+.ticker div{display:inline-block;animation:tick 28s linear infinite;font-family:Anton,sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:1px}
+.ticker span{color:var(--hot);margin:0 18px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* events */
+.events{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.ev{border-radius:22px;overflow:hidden;position:relative;transition:transform .3s;text-decoration:none;color:inherit}
+.ev:hover{transform:translateY(-6px) rotate(-.6deg)}
+.ev img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.ev .meta{padding:14px 16px}
+.ev .meta b{display:block;font-size:1.05rem}
+.ev .meta span{color:var(--muted);font-size:.88rem}
+.ev .when{position:absolute;top:12px;left:12px;background:var(--sun);color:#111;font-weight:800;font-size:.78rem;padding:5px 10px;border-radius:999px}
+
+/* nights */
+.nights{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.night{padding:22px;border-radius:22px}
+.night .ic{font-size:2rem}
+.night h3{font-size:1.6rem;margin:10px 0 6px}
+.night p{margin:0;color:var(--muted);font-size:.94rem}
+
+/* must try */
+.dishes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.dish{padding:18px;border-radius:20px;display:flex;justify-content:space-between;gap:12px}
+.dish b{display:block;font-size:1.02rem}
+.dish span{color:var(--muted);font-size:.86rem}
+.dish .pr{font-family:Anton,sans-serif;font-size:1.35rem;color:var(--sun);white-space:nowrap}
+
+/* order band */
+.order{border-radius:28px;padding:34px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;overflow:hidden;position:relative}
+.order::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,74,28,.35),rgba(255,122,26,.08) 60%,transparent);z-index:-1}
+.order h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+.steps{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;align-items:center;font-weight:600}
+.steps li i{font-style:normal;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--hot);color:#fff;font-weight:800;flex:none}
+.phone{justify-self:center;width:250px;height:500px;border-radius:38px;border:8px solid #1c1c1c;background:#000;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.1)}
+.phone iframe{width:390px;height:800px;border:0;transform:scale(.6205);transform-origin:0 0}
+@media(max-width:820px){.order{grid-template-columns:1fr;padding:24px}}
+
+/* bar */
+.bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.bar .col{padding:22px;border-radius:22px}
+.bar h3{font-size:1.5rem;color:var(--hot);margin-bottom:10px}
+.bar li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.1);font-size:.95rem}
+.bar ul{list-style:none;margin:0;padding:0}
+.bar li b{color:var(--sun);font-weight:700}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:block}
+.gal img:first-child{grid-row:span 2}
+@media(max-width:700px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.gal img:first-child{grid-column:span 2}}
+
+/* party */
+.party{border-radius:28px;padding:34px;text-align:center}
+.party h2{font-size:clamp(2.2rem,6vw,4rem)}
+.party .big{font-family:Anton,sans-serif;font-size:clamp(3rem,9vw,5.5rem);color:var(--sun);line-height:1;margin:14px 0}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1.2fr;gap:16px}
+.visit .card{padding:26px;border-radius:22px}
+.visit dl{margin:0;display:grid;gap:14px}
+.visit dt{color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:1px}
+.visit dd{margin:2px 0 0;font-weight:700;font-size:1.05rem}
+.visit iframe{width:100%;height:100%;min-height:320px;border:0;border-radius:22px;filter:invert(.9) hue-rotate(180deg) saturate(.6)}
+@media(max-width:760px){.visit{grid-template-columns:1fr}}
+footer{padding:40px 0 110px;text-align:center;color:var(--muted);font-size:.88rem}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);text-decoration:none;font-size:1.7rem}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav glass">
+  <a class="brand" href="#top"><img src="img/logo.jpg" alt="Wynkk logo"><span>WYNKK</span></a>
+  <nav><a href="#whats-on">What's on</a><a href="#food">Food</a><a href="#bar">Bar</a><a href="#party">Parties</a><a href="#visit">Visit</a></nav>
+  <a class="btn hot" href="menu.html" style="padding:10px 14px">Menu & order</a>
+</header>
+
+<section class="hero" id="top">
+  <div class="bg"></div>
+  <div class="wrap">
+    <span class="kicker glass"><i class="dot"></i> Open today · 12 PM – 11:30 PM</span>
+    <h1>Raise a glass.<br><span>Feel the rhythm.</span></h1>
+    <p class="lead">Flavours, energy & evenings to remember. Live music, big-screen sports, cocktails and Pan Asian + Indian food at Centriole Mall, Aundh.</p>
+    <div class="cta">
+      <a class="btn hot" href="menu.html">🍽️ See menu & order</a>
+      <a class="btn wa" id="reserve" target="_blank">💬 Reserve a table</a>
+      <a class="btn ghost" href="tel:+919022417418">📞 Call</a>
+    </div>
+    <div class="facts">
+      <div class="glass">⭐ Google<b>4.4 · 402 reviews</b></div>
+      <div class="glass">🎸 Every week<b>Live music</b></div>
+      <div class="glass">⚽ Big screen<b>Match nights</b></div>
+      <div class="glass">🍺 Beer from<b>₹180</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div>
+  Live music <span>✦</span> Karaoke <span>✦</span> Big-screen football <span>✦</span> F1 watch parties <span>✦</span> Cocktails <span>✦</span> Bollywood nights <span>✦</span> Pan Asian <span>✦</span> Kebabs <span>✦</span>
+  Live music <span>✦</span> Karaoke <span>✦</span> Big-screen football <span>✦</span> F1 watch parties <span>✦</span> Cocktails <span>✦</span> Bollywood nights <span>✦</span> Pan Asian <span>✦</span> Kebabs <span>✦</span>
+</div></div>
+
+<section id="whats-on"><div class="wrap">
+  <div class="head reveal"><div><small>This week at Wynkk</small><h2>What's on</h2></div><p>Gigs, screenings and theme nights. Tap to book your table on WhatsApp.</p></div>
+  <div class="events">
+    <a class="ev glass reveal" data-book="Surya Live, 28 Nov"><img src="img/ev-surya.jpg" alt="Surya Live poster"><span class="when">Sat 28 Nov · 8 PM</span><div class="meta"><b>सूर्या Live · Sing-along Bollywood</b><span>Live band, full-house singalong</span></div></a>
+    <a class="ev glass reveal" data-book="Match night"><img src="img/ev-football.jpg" alt="Liverpool vs Man Utd screening poster"><span class="when">Big screen</span><div class="meta"><b>Football on the big screen</b><span>Premier League nights, 10 PM</span></div></a>
+    <a class="ev glass reveal" data-book="F1 watch party"><img src="img/ev-f1.jpg" alt="F1 watch party poster"><span class="when">Beer @ ₹189</span><div class="meta"><b>F1 Watch Parties</b><span>Every race weekend</span></div></a>
+    <a class="ev glass reveal" data-book="Bollywood night"><img src="img/ev-diwali.jpg" alt="Bollywood night poster"><span class="when">Saturdays</span><div class="meta"><b>Bollywood / Desi Nights</b><span>DJ from 8 PM onwards</span></div></a>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="nights">
+    <div class="night glass reveal"><div class="ic">🎸</div><h3>Live music</h3><p>Bands and singers every week. Rock & Brews, Bollywood sing-alongs and more.</p></div>
+    <div class="night glass reveal"><div class="ic">🎤</div><h3>Karaoke nights</h3><p>Grab the mic, bring the gang. Pune's loudest karaoke crowd.</p></div>
+    <div class="night glass reveal"><div class="ic">📺</div><h3>Sports screenings</h3><p>Football, cricket and F1 on the big screen with match-day beer deals.</p></div>
+    <div class="night glass reveal"><div class="ic">🎉</div><h3>Theme parties</h3><p>Halloween, Diwali After Dark, anime nights. There's always something on.</p></div>
+  </div>
+</div></section>
+
+<section id="food" style="padding-top:20px"><div class="wrap">
+  <div class="head reveal"><div><small>Chef's picks</small><h2>Wynkk must try</h2></div><p>Indian kebabs, Pan Asian wok dishes and bar bites made for sharing.</p></div>
+  <div class="dishes">
+    <div class="dish glass reveal"><div><b>Wynkk Matka Chicken</b><span>Chicken & spices cooked in an earthen pot</span></div><div class="pr">₹380</div></div>
+    <div class="dish glass reveal"><div><b>Murtabak</b><span>Stuffed pancake: veg / chicken / mutton</span></div><div class="pr">₹330+</div></div>
+    <div class="dish glass reveal"><div><b>Tequila Prawns</b><span>In a tequila & orange sauce</span></div><div class="pr">₹450</div></div>
+    <div class="dish glass reveal"><div><b>Chicken Sugarcane Skewer</b><span>Minced chicken on a sugarcane stick</span></div><div class="pr">₹345</div></div>
+    <div class="dish glass reveal"><div><b>Wynkk Matka Paneer</b><span>Tandoori paneer, cheese, earthen pot</span></div><div class="pr">₹350</div></div>
+    <div class="dish glass reveal"><div><b>Kheema Pav</b><span>The mutton dish you must try</span></div><div class="pr">₹390</div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="order glass reveal">
+    <div>
+      <small class="marker" style="font-size:1.2rem">New at Wynkk</small>
+      <h2>Scan. Order.<br>Chill.</h2>
+      <ol class="steps">
+        <li><i>1</i> Scan the QR on your table</li>
+        <li><i>2</i> Browse the menu with veg filter & search</li>
+        <li><i>3</i> Add dishes & drinks, tap send</li>
+        <li><i>4</i> Order reaches the kitchen on WhatsApp with your table no.</li>
+      </ol>
+      <a class="btn hot" href="menu.html?t=5">Try it: Table 5 →</a>
+    </div>
+    <div class="phone"><iframe src="menu.html?t=5" title="Wynkk menu preview"></iframe></div>
+  </div>
+</div></section>
+
+<section id="bar"><div class="wrap">
+  <div class="head reveal"><div><small>Raise a glass</small><h2>The bar</h2></div><p>Classic cocktails, signature LIITs, shots and chilled beer on tap.</p></div>
+  <div class="bar">
+    <div class="col glass reveal"><h3>Signatures</h3><ul><li>1st Dose at Wynkk <b>₹480</b></li><li>Wynkk LIIT <b>₹450</b></li><li>Whisky Crusher <b>₹370</b></li><li>Tequila Sunrise <b>₹350</b></li><li>Mojito <b>₹300</b></li></ul></div>
+    <div class="col glass reveal"><h3>Beer</h3><ul><li>Kingfisher <b>₹180</b></li><li>Bira On Tap <b>₹250</b></li><li>Budweiser <b>₹240</b></li><li>Heineken <b>₹350</b></li><li>Bira Pitcher <b>₹950</b></li></ul></div>
+    <div class="col glass reveal"><h3>Shots</h3><ul><li>Jager Bomb <b>₹495</b></li><li>Liquid Cocaine <b>₹450</b></li><li>B52 <b>₹420</b></li><li>Kamikaze <b>₹260</b></li><li>Mocktails from <b>₹220</b></li></ul></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head reveal"><div><small>Nights at Wynkk</small><h2>Gallery</h2></div></div>
+  <div class="gal reveal">
+    <img src="img/crowd.jpg" alt="Full house at Wynkk"><img src="img/band.jpg" alt="Live band"><img src="img/ev-halloween.jpg" alt="Halloween party"><img src="img/ev-surya.jpg" alt="Surya live"><img src="img/ev-diwali.jpg" alt="Diwali After Dark">
+  </div>
+</div></section>
+
+<section id="party" style="padding-top:0"><div class="wrap">
+  <div class="party glass reveal">
+    <small class="marker" style="font-size:1.3rem">Birthdays · office parties · group nights</small>
+    <h2>Host your party at Wynkk</h2>
+    <div class="big">From ₹950<small style="font-size:.4em;color:var(--muted)"> / person</small></div>
+    <a class="btn wa" id="partyBtn" target="_blank">💬 Ask for party packages</a>
+  </div>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap">
+  <div class="head reveal"><div><small>Come say hi</small><h2>Visit us</h2></div></div>
+  <div class="visit">
+    <div class="card glass reveal"><dl>
+      <div><dt>Address</dt><dd>Centriole Mall, ITI Road, Aundh, Pune</dd></div>
+      <div><dt>Open</dt><dd>Every day · 12 PM – 11:30 PM</dd></div>
+      <div><dt>Reservations</dt><dd><a href="tel:+919022417418">+91 90224 17418</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:connect@wynkkpune.com">connect@wynkkpune.com</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/wynkk_pune/" target="_blank">@wynkk_pune</a></dd></div>
+    </dl></div>
+    <iframe class="reveal" loading="lazy" title="Map" src="https://maps.google.com/maps?q=Wynkk%20Centriole%20Mall%20ITI%20Road%20Aundh%20Pune&z=15&output=embed"></iframe>
+  </div>
+</div></section>
+
+<footer>© Wynkk, Aundh Pune · Raise a glass. Feel the rhythm.</footer>
+<a class="fab" id="fab" target="_blank" aria-label="WhatsApp Wynkk">💬</a>
+
+<script>
+const WA = '919022417418';
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+document.getElementById('reserve').href = wa('Hi Wynkk! I want to reserve a table. Date: __ Time: __ People: __');
+document.getElementById('fab').href = wa('Hi Wynkk!');
+document.getElementById('partyBtn').href = wa('Hi Wynkk! Please share your party packages. Date: __ Guests: __');
+document.querySelectorAll('[data-book]').forEach(a => { a.href = wa(`Hi Wynkk! I want to book a table for ${a.dataset.book}. People: __`); a.target = '_blank'; });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

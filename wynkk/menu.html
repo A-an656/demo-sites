@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wynkk · Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--ink:#f5f1ea;--muted:#a8a29e;--hot:#ff4a1c;--hot2:#ff7a1a;--sun:#ffd23f;--veg:#22c55e;--nonveg:#ef4444;
+  --glass:rgba(255,255,255,.07);--edge:rgba(255,255,255,.15)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font:15px/1.5 Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);padding-bottom:120px}
+body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;filter:blur(40px);
+  background:radial-gradient(30vmax 30vmax at 10% 10%,rgba(255,74,28,.3),transparent 70%),radial-gradient(30vmax 30vmax at 90% 70%,rgba(255,210,63,.12),transparent 70%)}
+h1,h2{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.5px;margin:0;line-height:1}
+.glass{background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+.wrap{max-width:760px;margin:0 auto;padding-inline:14px}
+
+header{position:relative;height:250px;background:url(img/crowd.jpg) center 30%/cover;border-radius:0 0 28px 28px;overflow:hidden}
+header::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.2),rgba(10,10,10,.92))}
+header .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:18px}
+.logo{width:58px;height:58px;border-radius:50%;background:#fff;margin-bottom:10px;box-shadow:0 0 0 3px rgba(255,74,28,.6)}
+header h1{font-size:2.5rem}
+header p{margin:4px 0 0;color:#d6d3d1;font-size:.9rem}
+.tag-line{font-family:"Permanent Marker",cursive;color:var(--hot);font-size:1rem}
+.table-chip{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:2;padding:7px 14px;border-radius:999px;font-weight:800;font-size:.9rem;background:var(--sun);color:#111;box-shadow:0 8px 20px -6px rgba(255,210,63,.6)}
+.waiter{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:14px;z-index:2;padding:7px 12px;border-radius:999px;font-weight:700;font-size:.82rem;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer;font-family:inherit}
+
+.tools{position:sticky;top:0;z-index:10;padding:10px 0 6px}
+.tools .bar{border-radius:20px;padding:10px;background:rgba(18,18,18,.72)}
+.search{display:flex;gap:8px}
+.search input{flex:1;min-width:0;font:inherit;padding:11px 14px;border-radius:14px;border:1px solid var(--edge);background:rgba(255,255,255,.06);color:var(--ink)}
+.search input::placeholder{color:#78716c}
+.vegtoggle{display:flex;align-items:center;gap:6px;padding:0 12px;border-radius:14px;border:1px solid var(--edge);background:rgba(255,255,255,.06);font-weight:700;font-size:.84rem;cursor:pointer;user-select:none;white-space:nowrap}
+.vegtoggle input{accent-color:var(--veg)}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-top:10px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;font:inherit;font-weight:700;font-size:.85rem;padding:8px 14px;border-radius:999px;border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer}
+.cats button.on{background:var(--hot);border-color:transparent}
+
+section{padding-top:20px;scroll-margin-top:130px}
+section h2{font-size:1.7rem;margin:4px 4px 12px;display:flex;align-items:center;gap:10px}
+section h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--hot),transparent)}
+.item{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px;border-radius:20px;margin-bottom:10px;align-items:center}
+.item h3{font-size:.98rem;font-weight:700;display:flex;gap:8px;align-items:center;margin:0}
+.mark{width:14px;height:14px;border:1.5px solid;border-radius:3px;display:grid;place-items:center;flex:none}
+.mark::after{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.mark.veg{color:var(--veg)}.mark.nonveg{color:var(--nonveg)}.mark.drink{color:var(--sun);border-radius:50%}
+.item p{margin:3px 0 6px;color:var(--muted);font-size:.84rem}
+.price{font-weight:800;color:var(--sun)}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:999px;background:rgba(255,74,28,.18);color:#ff8a65;margin-left:6px}
+.right{display:flex;flex-direction:column;align-items:center;gap:8px}
+.pic{width:84px;height:84px;border-radius:16px;object-fit:cover;display:grid;place-items:center;font-size:2.1rem;background:rgba(255,255,255,.06)}
+.add{min-width:84px;height:34px;border-radius:12px;border:1px solid var(--hot);background:rgba(255,74,28,.12);color:#fff;font:inherit;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:0 10px}
+.add.empty{justify-content:center;color:#ff8a65}
+.add.full{background:var(--hot)}
+.add span{min-width:18px;text-align:center}
+.add b{cursor:pointer;padding:0 4px;font-size:1.1rem}
+
+.cartbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:20;max-width:736px;margin:0 auto;border-radius:20px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:linear-gradient(135deg,rgba(255,74,28,.92),rgba(255,122,26,.88));color:#fff;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.35);box-shadow:0 16px 34px -10px rgba(255,74,28,.7);transform:translateY(160%);transition:transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.cartbar.show{transform:none}
+.cartbar small{display:block;opacity:.9}
+.cartbar button{font:inherit;font-weight:800;border:0;border-radius:14px;padding:11px 16px;background:#fff;color:var(--hot);cursor:pointer}
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:30;opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet-bg.show{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;max-width:760px;margin:0 auto;border-radius:26px 26px 0 0;padding:20px 18px calc(20px + env(safe-area-inset-bottom,0px));background:rgba(22,22,22,.9);border-top:1px solid var(--edge);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);transform:translateY(105%);transition:transform .32s ease;max-height:88vh;overflow:auto}
+.sheet.show{transform:none}
+.sheet h2{font-size:1.6rem;margin-bottom:10px}
+.line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+.total{display:flex;justify-content:space-between;font-weight:800;padding:12px 0;font-size:1.1rem}
+.total span:last-child{color:var(--sun)}
+.sheet input,.sheet textarea{width:100%;font:inherit;padding:12px 14px;border-radius:14px;border:1px solid var(--edge);background:rgba(255,255,255,.06);color:var(--ink);margin-bottom:10px}
+.send{width:100%;font:inherit;font-weight:800;border:0;border-radius:16px;padding:15px;background:#25d366;color:#04210f;cursor:pointer;font-size:1.02rem}
+.empty-msg{text-align:center;color:var(--muted);padding:30px 0}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:26px 0 10px}
+.toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-140%);z-index:50;background:#111;border:1px solid var(--edge);padding:10px 16px;border-radius:14px;font-weight:700;transition:transform .3s}
+.toast.show{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<header>
+  <button class="waiter" id="waiter">🙋 Call waiter</button>
+  <span class="table-chip" id="tableChip" hidden></span>
+  <div class="wrap">
+    <img class="logo" src="img/logo.jpg" alt="Wynkk">
+    <h1>Wynkk</h1>
+    <span class="tag-line">Raise a glass. Feel the rhythm.</span>
+    <p>Centriole Mall, Aundh · Order from your table on WhatsApp</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tools"><div class="bar glass">
+    <div class="search"><input id="q" type="search" placeholder="Search dishes & drinks…" aria-label="Search"><label class="vegtoggle"><input type="checkbox" id="vegOnly"> Veg only</label></div>
+    <nav class="cats" id="cats"></nav>
+  </div></div>
+  <main id="menu"></main>
+  <footer>Wynkk Kitchen & Bar · Prices in ₹ · Taxes as applicable</footer>
+</div>
+
+<div class="cartbar" id="cartbar"><div><b id="cCount"></b><small id="cTotal"></small></div><button id="viewCart">View order →</button></div>
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Your order">
+  <h2>Your order</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="sTotal"></span></div>
+  <input id="cName" placeholder="Your name" autocomplete="name">
+  <input id="cPhone" type="tel" inputmode="numeric" placeholder="Your mobile number (10 digits)" autocomplete="tel" maxlength="14">
+  <p id="cErr" style="color:#f87171;font-size:.85rem;margin:-4px 0 10px" hidden>Please enter a valid 10-digit mobile number.</p>
+  <input id="cTable" placeholder="Table number" inputmode="numeric">
+  <textarea id="cNote" rows="2" placeholder="Any request? (less spicy, no onion…)"></textarea>
+  <button class="send" id="sendWa">Send order on WhatsApp</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* menu.html?t=5  (table number from the QR card) */
+const q = new URLSearchParams(location.search);
+const R = { name: 'Wynkk', phone: q.get('p') || '919022417418', table: q.get('t') || '' };
+const U = id => `https://images.unsplash.com/photo-${id}?w=200&h=200&fit=crop&q=70`;
+/* kind: 1 veg, 0 non-veg, 2 drink. Variants written as "Veg 150 | Chicken 180" become separate rows. */
+const V = 1, N = 0, D = 2;
+const MENU = {
+  'Must Try': [
+    ['Wynkk Matka Chicken', 'Chicken & spices cooked in an earthen pot', 380, N, '🍲', 'Signature'],
+    ['Wynkk Matka Paneer', 'Tandoori paneer layered with cheese, in an earthen pot', 350, V, '🍲', 'Signature'],
+    ['Murtabak (Veg)', 'Stuffed pancake with minced veg', 330, V, '🥙'],
+    ['Murtabak (Chicken)', 'Stuffed pancake with minced chicken', 390, N, '🥙'],
+    ['Murtabak (Mutton)', 'Stuffed pancake with minced mutton', 430, N, '🥙', 'Bestseller'],
+    ['Chicken Sugarcane Skewer', 'Minced chicken skewered on a sugarcane stick', 345, N, '🍢'],
+    ['Tequila Prawns in Orange Sauce', 'Prawns cooked in tequila & orange sauce', 450, N, '🍤'],
+    ['Kheema Pav', 'The extremely versatile mutton dish… must try', 390, N, '🍛'],
+    ['Cheesy Garlic Mushroom', 'Mushroom tossed in a cheesy sauce', 285, V, '🍄'],
+    ['Honey Glazed Chilly Paneer', 'Paneer in chilli sauce, glazed with honey', 300, V, '🧀'],
+    ['Masala Cheez Pao', 'Simple & delicious', 165, V, '🥖'],
+    ['Kadak Seekh Kebab (Chicken)', 'Skewered mince kebab stuffed with cheese', 345, N, '1599487488170-d11ec9c172f0'],
+  ],
+  'Bar Bites': [
+    ['Masala Papad', '', 99, V, '🫓'], ['Masala Peanuts', '', 99, V, '🥜'], ['Kanda Bhaji', '', 150, V, '🧅'],
+    ['Piri Piri Fries', '', 165, V, '🍟'], ['Cheesy Fries', '', 210, V, '🍟'], ['Jalapeno Poppers', '', 210, V, '🌶️'],
+    ['Chicken Piri Piri Popcorn', '', 250, N, '1626082927389-6cd097cdc6ec', 'Bestseller'],
+    ['Baby Naan Tacos (Veg)', '', 240, V, '🌮'], ['Baby Naan Tacos (Chicken)', '', 285, N, '🌮'], ['Mexican Chicken Strips', '', 255, N, '🍗'],
+  ],
+  'Soups': [
+    ['Tomato & Basil Broth', 'Delicate tomato broth with basil', 150, V, '🍅'],
+    ['Manchow Soup (Veg)', 'Garlic soya soup with crispy noodles', 150, V, '🥣'], ['Manchow Soup (Chicken)', 'Garlic soya soup with crispy noodles', 180, N, '🥣'],
+    ['Tom Yum Soup (Veg)', 'Hot & sour with lemongrass, lime, galangal', 150, V, '🍜'], ['Tom Yum Soup (Chicken)', 'Hot & sour with lemongrass, lime, galangal', 180, N, '🍜'],
+    ['Malaysian Laksa (Chicken)', 'Coconut-based soup with noodles', 210, N, '🍜'],
+  ],
+  'Indian Starters': [
+    ['Koyla Paneer Tikka', 'Charcoal-grilled, mint chutney', 280, V, '1567188040759-fb8a883dc6d8', 'Bestseller'],
+    ['Tandoori Achari Aloo', 'Baby potatoes, pickling spices, charcoal grilled', 240, V, '🥔'],
+    ['Paneer Reshmi Kebab', 'Cottage cheese in hung curd & spices', 270, V, '🧀'],
+    ['Veg Seekh Kebab', 'Minced mix-veg kebab, mint chutney', 285, V, '🍢'],
+    ['Murg Tikka', 'Chicken marinated in spices, charcoal grilled', 330, N, '🍗'],
+    ['Murg Charminari', "Chef's special kebab, must try", 330, N, '🍗'],
+    ['Mutton Seekh Kebab', 'Skewered minced lamb kebab', 380, N, '1599487488170-d11ec9c172f0'],
+    ['Fish Koliwada', "Spicy battered fried fisherman's dish", 345, N, '🐟'],
+  ],
+  'Pan Asian Starters': [
+    ['Honey Chilly Corn Potato', 'Potato fries & corn in honey chilli sauce', 270, V, '🌽'],
+    ['Paneer Chilly', 'Paneer sautéed in chilli & soy sauce', 270, V, '🧀'],
+    ['Veg Spring Roll', 'Shredded veg in rice paper, fried', 255, V, '🥢'],
+    ['Chilly Chicken', 'Chicken sautéed in chilli & soy sauce', 300, N, '🌶️'],
+    ['Chicken Bulgogi', 'Korean chicken, ginger garlic & honey chilli', 360, N, '🍗'],
+    ['Chicken Satay', 'Served with peanut sauce', 345, N, '🍢'],
+    ['Singapore Chilly Prawns', 'Prawns in a special sambal sauce', 450, N, '🍤'],
+  ],
+  'Main Course': [
+    ['Butter Chicken', 'Boneless barbecued chicken in a rich cashew-tomato gravy', 360, N, '1565557623262-b51c2513a641', 'Bestseller'],
+    ['Chicken Tikka Curry', 'Boneless barbecue chicken in tomato gravy', 375, N, '1631452180519-c014fe946bc7'],
+    ['Paneer Butter Masala', 'Barbecued paneer in rich cashew-tomato gravy', 300, V, '1588166524941-3bf61a9c41db'],
+    ['Kadai Paneer', 'Chunks of paneer in brown gravy', 300, V, '🍛'],
+    ['Dal Fry / Tadka', '', 255, V, '🍲'],
+    ['Thai Green Curry (Veg)', 'Thai spices & green chilli in coconut milk', 360, V, '🍛'],
+    ['Thai Green Curry (Chicken)', 'Thai spices & green chilli in coconut milk', 390, N, '🍛'],
+    ['Pad Thai (Chicken)', 'Stir-fried spicy tangy flat noodles', 375, N, '🍜'],
+    ['Chow Mein (Veg)', 'Noodles with soya sauce & veggies', 270, V, '🍜'],
+    ['Nasi Goreng (Chicken)', 'Indonesian fried rice, red chillies, sambal', 375, N, '🍚'],
+    ['Burmese Khow Suey (Chicken)', 'Burmese curry, burnt garlic noodles, condiments', 390, N, '🍜'],
+  ],
+  'Cocktails': [
+    ['1st Dose at Wynkk', 'Our signature', 480, D, '🍹', 'Signature'],
+    ['Wynkk LIIT', 'Long Island, the Wynkk way', 450, D, '🍹'],
+    ['Mojito', '', 300, D, '🍸'], ['Tequila Sunrise', '', 350, D, '🍹'], ['Whisky Sour', '', 320, D, '🥃'], ['Margarita', '', 350, D, '🍸'],
+  ],
+  'Beer': [
+    ['Kingfisher', '', 180, D, '🍺'], ['Bira On Tap', '', 250, D, '🍺', 'On tap'], ['Budweiser', '', 240, D, '🍺'], ['Heineken', '', 350, D, '🍺'], ['Bira Pitcher', 'Share with the gang', 950, D, '🍻'],
+  ],
+  'Shots & Mocktails': [
+    ['Jager Bomb', '', 495, D, '🥃'], ['B52', '', 420, D, '🥃'], ['Kamikaze', '', 260, D, '🥃'],
+    ['Virgin Mojito', '', 220, D, '🍹'], ['Virgin Pina Colada', '', 225, D, '🍍'], ['Fresh Lime', '', 150, D, '🍋'], ['Red Bull', '', 200, D, '🥫'],
+  ],
+};
+const $ = id => document.getElementById(id);
+const inr = n => '₹' + n.toLocaleString('en-IN');
+const cart = {};
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const isVeg = k => k !== N;
+
+if (R.table) { $('tableChip').hidden = false; $('tableChip').textContent = 'Table ' + R.table; $('cTable').value = R.table; }
+
+function render() {
+  const term = $('q').value.trim().toLowerCase(), veg = $('vegOnly').checked;
+  let html = '';
+  for (const [cat, items] of Object.entries(MENU)) {
+    const list = items.filter(i => (!veg || isVeg(i[3])) && (!term || (i[0] + ' ' + i[1]).toLowerCase().includes(term)));
+    if (!list.length) continue;
+    html += `<section id="c-${slug(cat)}"><h2>${cat}</h2>` + list.map(([n, d, p, k, img, tag]) => {
+      const qty = cart[n]?.qty || 0;
+      const pic = /^\d/.test(img) ? `<img class="pic" src="${U(img)}" alt="" loading="lazy">` : `<div class="pic">${img}</div>`;
+      const btn = qty ? `<div class="add full" data-k="${n}"><b data-d="-1">−</b><span>${qty}</span><b data-d="1">+</b></div>` : `<button class="add empty" data-k="${n}" data-d="1">ADD +</button>`;
+      const mk = k === D ? 'drink' : k ? 'veg' : 'nonveg';
+      return `<div class="item glass"><div><h3><span class="mark ${mk}"></span>${n}</h3>${d ? `<p>${d}</p>` : '<p></p>'}<span class="price">${inr(p)}</span>${tag ? `<span class="tag">${tag}</span>` : ''}</div><div class="right">${pic}${btn}</div></div>`;
+    }).join('') + `</section>`;
+  }
+  $('menu').innerHTML = html || '<p class="empty-msg">No dishes match your search.</p>';
+  if (!$('cats').children.length) $('cats').innerHTML = Object.keys(MENU).map(c => `<button data-c="${slug(c)}">${c}</button>`).join('');
+  updateBar();
+}
+function find(k) { for (const items of Object.values(MENU)) for (const i of items) if (i[0] === k) return i; }
+function change(k, d) {
+  const it = find(k), n = Math.max(0, (cart[k]?.qty || 0) + d);
+  if (n) cart[k] = { qty: n, price: it[2] }; else delete cart[k];
+  render(); if ($('sheet').classList.contains('show')) fillSheet();
+}
+function totals() { let c = 0, t = 0; for (const v of Object.values(cart)) { c += v.qty; t += v.qty * v.price; } return { c, t }; }
+function updateBar() { const { c, t } = totals(); $('cartbar').classList.toggle('show', c > 0); $('cCount').textContent = `${c} item${c > 1 ? 's' : ''}`; $('cTotal').textContent = inr(t); }
+function fillSheet() {
+  $('lines').innerHTML = Object.entries(cart).map(([k, v]) => `<div class="line"><span>${v.qty} × ${k}</span><span>${inr(v.qty * v.price)}</span></div>`).join('') || '<p class="empty-msg">Your order is empty.</p>';
+  $('sTotal').textContent = inr(totals().t);
+}
+function openSheet(on) { if (on) fillSheet(); $('sheet').classList.toggle('show', on); $('sheetBg').classList.toggle('show', on); }
+function toast(t) { $('toast').textContent = t; $('toast').classList.add('show'); setTimeout(() => $('toast').classList.remove('show'), 2200); }
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-d]');
+  if (b) { change(b.dataset.k || b.closest('[data-k]').dataset.k, +b.dataset.d); return; }
+  const c = e.target.closest('[data-c]');
+  if (c) { document.querySelectorAll('.cats button').forEach(x => x.classList.toggle('on', x === c)); $('c-' + c.dataset.c)?.scrollIntoView({ behavior: 'smooth' }); }
+});
+$('q').addEventListener('input', render);
+$('vegOnly').addEventListener('change', render);
+$('viewCart').addEventListener('click', () => openSheet(true));
+$('sheetBg').addEventListener('click', () => openSheet(false));
+$('waiter').addEventListener('click', () => {
+  const t = $('cTable').value.trim() || R.table;
+  window.open(`https://wa.me/${R.phone}?text=${encodeURIComponent(`🙋 Waiter needed${t ? ' at Table ' + t : ''}`)}`, '_blank');
+  toast('Waiter is on the way 👍');
+});
+$('sendWa').addEventListener('click', () => {
+  const { c, t } = totals(); if (!c) return;
+  const lines = Object.entries(cart).map(([k, v]) => `• ${v.qty} × ${k} — ${inr(v.qty * v.price)}`).join('\n');
+  const tbl = $('cTable').value.trim(), name = $('cName').value.trim(), note = $('cNote').value.trim();
+  const digits = $('cPhone').value.replace(/\D/g, '').replace(/^(91|0)(?=\d{10}$)/, '');
+  if (!/^[6-9]\d{9}$/.test(digits)) { $('cErr').hidden = false; $('cPhone').focus(); return; }
+  $('cErr').hidden = true;
+  const phone = '+91 ' + digits.slice(0, 5) + ' ' + digits.slice(5);
+  const msg = `🧾 New order — ${R.name}\n${tbl ? 'Table: ' + tbl + '\n' : ''}${name ? 'Name: ' + name + '\n' : ''}Mobile: ${phone}\n\n${lines}\n\nTotal: ${inr(t)}${note ? '\nNote: ' + note : ''}`;
+  window.open(`https://wa.me/${R.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+});
+render();
+</script>
+</body>
+</html>
